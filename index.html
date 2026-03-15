@@ -99,7 +99,7 @@ nav .bp:hover{background:var(--PD);box-shadow:0 4px 16px rgba(50,130,222,.3)}
 @keyframes bC{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-20px)}}
 @keyframes dash{to{stroke-dashoffset:-200}}
 
-.hi{position:relative;z-index:2;text-align:center;padding-bottom:72px}
+.hi{position:relative;z-index:2;text-align:center;padding-bottom:56px}
 .hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(50,130,222,.07);border:1px solid rgba(50,130,222,.18);border-radius:20px;padding:5px 14px 5px 8px;font-size:12.5px;color:#2268C0;margin-bottom:32px}
 .hbpill{background:var(--P);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;letter-spacing:.02em}
 h1.ht{font-size:clamp(40px,6.2vw,76px);font-weight:800;color:var(--text);margin-bottom:24px;line-height:1.02}
@@ -114,7 +114,7 @@ h1.ht em{font-style:normal;background:linear-gradient(110deg,var(--P) 0%,#5BA3E8
 .hnote{font-size:12.5px;color:#9ca3af;margin-bottom:56px}
 
 /* Stats */
-.hstats{display:flex;align-items:center;justify-content:center;gap:48px;margin-bottom:60px}
+.hstats{display:flex;align-items:center;justify-content:center;gap:48px;margin-bottom:44px}
 .hst{text-align:center}
 .hstn{font-size:30px;font-weight:800;color:var(--text);line-height:1}
 .hstl{font-size:12px;color:var(--muted);margin-top:4px;font-weight:300}
@@ -493,8 +493,9 @@ footer{background:var(--bgl);border-top:1px solid var(--border);padding:60px 0 3
   .w{padding:0 16px}
   .wn{padding:0 16px}
   section{padding:72px 0}
-  .hstats{gap:20px 32px}
+  .hstats{gap:20px 32px;margin-bottom:28px}
   h1.ht{font-size:clamp(32px,8vw,56px)}
+  .hero{padding:96px 0 0}
   .hmkp{display:none}
   .fgrid{grid-template-columns:1fr}
   .igrid{grid-template-columns:1fr}
@@ -636,6 +637,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   h2.sec-h{font-size:clamp(20px,5.5vw,32px)}
   .pg-title{font-size:clamp(26px,7vw,42px)}
   /* hero */
+  .hero{padding:96px 0 0}
   .hmkp{display:none}
   .hstats{flex-wrap:wrap;gap:16px 28px;justify-content:center}
   .hsdiv{display:none}
@@ -685,6 +687,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   .wn{padding:0 14px}
   h1.ht{font-size:clamp(28px,8.5vw,42px)}
   .hbadge{font-size:11px}
+  .hero{padding:84px 0 0}
   .nlogo svg{width:100px;height:26px}
   .bh1,.bh2{font-size:14px;padding:12px 20px}
   .hstats{gap:12px 20px}
@@ -842,7 +845,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   <div class="hi">
     <div class="hbadge rv"><span class="hbpill">Nouveau</span> Connecté à vos outils — pré-remplissage automatique depuis vos PDF</div>
     <h1 class="ht rv d1">Vos formulaires BTP,<br><em>dématérialisés en 15 min</em></h1>
-    <p class="hsub rv d2">Uploadez un PDF, posez vos champs en glisser-déposer, publiez. Vos équipes remplissent depuis leur poste, vous récupérez des PDF signés.</p>
+    <p class="hsub rv d2">Uploadez votre PDF, posez vos champs, publiez. Vos équipes remplissent depuis leur téléphone — vous récupérez des PDF signés.</p>
     <div class="hacts rv d3">
       <a href="https://btpforms.com" class="bh1">🚀 Essayer gratuitement</a>
       <button onclick="openRappel()" class="bh2" style="cursor:pointer">📞 Être rappelé</button>
@@ -1006,7 +1009,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
 <div class="w">
   <div style="text-align:center">
     <div class="slbl rv">La plateforme complète</div>
-    <h2 class="st rv" style="text-align:center;margin-left:auto;margin-right:auto">Tout ce qu'il faut pour<br>dématérialiser votre terrain</h2>
+    <h2 class="st rv" style="text-align:center;margin-left:auto;margin-right:auto">Fini le papier sur le chantier</h2>
   </div>
 
   <!-- Block 1 — Builder -->
@@ -1014,7 +1017,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
     <div class="fbt">
       <div class="badge-s"><span class="bdot"></span>Builder visuel</div>
       <h2>Partez d'un PDF existant ou créez le vôtre de A à Z</h2>
-      <p>Vous avez déjà un PDF ? Uploadez-le et posez vos champs dessus en glisser-déposer. Vous partez de zéro ? Le builder vous permet de construire votre formulaire entièrement depuis l'application. 7 types de champs, aucune compétence technique requise.</p>
+      <p>Importez votre PDF existant et posez vos champs dessus en glisser-déposer. Ou construisez votre formulaire de zéro. 7 types de champs, aucune compétence technique requise.</p>
       <ul class="fbl">
         <li>Texte libre, Zone de texte, Date, Case à cocher</li>
         <li>Liste déroulante, Image, Signature en paraphe</li>
@@ -1042,7 +1045,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
     <div class="fbt">
       <div class="badge-s"><span class="bdot"></span>App connexions</div>
       <h2>Vos outils internes pré-remplissent vos formulaires</h2>
-      <p>Connectez n'importe quel outil via App connexions. Vos données métier (client, chantier, adresse, référence) se synchronisent et pré-remplissent automatiquement les champs du formulaire.</p>
+      <p>Connectez votre logiciel de gestion. Client, chantier, adresse — tout se pré-remplit automatiquement. Fini la double saisie.</p>
       <ul class="fbl">
         <li>Activation en un clic depuis App connexions</li>
         <li>Champs adresse, client, chantier auto-remplis</li>
@@ -1073,7 +1076,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
     <div class="fbt">
       <div class="badge-s"><span class="bdot"></span>Soumissions</div>
       <h2>Récupérez des PDF remplis, signés, prêts à l'emploi</h2>
-      <p>Chaque soumission génère un PDF conforme à votre modèle. Filtrez par date, sélectionnez plusieurs soumissions et exportez en masse. Éditez une soumission après coup si besoin.</p>
+      <p>Chaque soumission génère un PDF conforme à votre modèle. Filtrez, sélectionnez, exportez en masse. Vous pouvez aussi modifier une soumission après coup.</p>
       <ul class="fbl">
         <li>Filtres par date "Du… Au…" et recherche</li>
         <li>Export PDF individuel ou sélection multiple</li>
@@ -1117,18 +1120,18 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   <div style="text-align:center">
     <div class="slbl rv">Tout inclus</div>
     <h2 class="st rv" style="text-align:center;margin-left:auto;margin-right:auto">Une suite complète pour votre terrain</h2>
-    <p class="ss rv" style="margin:0 auto;text-align:center">De la création du template à l'archivage automatique.</p>
+    <p class="ss rv" style="margin:0 auto;text-align:center">Tout ce qu'il vous faut, sans formation.</p>
   </div>
   <div class="fgrid rv">
-    <div class="fc"><div class="fci">📄</div><h3>Templates PDF</h3><p>Uploadez un PDF existant ou construisez votre formulaire de A à Z directement dans l'app. Aucun logiciel de mise en page requis.</p></div>
-    <div class="fc"><div class="fci">🎨</div><h3>Builder</h3><p>7 types de champs à poser directement sur le PDF. Glissez, redimensionnez, définissez les propriétés.</p></div>
-    <div class="fc"><div class="fci">🌐</div><h3>Formulaires publiés</h3><p>Lien public ou privé sécurisé via mot de passe. Vos équipes remplissent depuis leur navigateur, sans compte.</p></div>
-    <div class="fc"><div class="fci">✍️</div><h3>Signature pad</h3><p>Tracé manuscrit capturé et intégré directement dans le PDF final. Sans plugin.</p></div>
-    <div class="fc"><div class="fci">▦</div><h3>QR code chantier</h3><p>Chaque formulaire publié génère son QR code instantanément. Affichez-le sur le chantier — scannez, remplissez en 3 secondes.</p></div>
-    <div class="fc"><div class="fci">📥</div><h3>Soumissions</h3><p>Collecte, filtres par date, édition post-soumission et export PDF individuel ou en masse (ZIP).</p></div>
-    <div class="fc"><div class="fci">🔗</div><h3>App connexions</h3><p>Connectez vos outils internes. Pré-remplissage automatique des champs, envoi de PDF, zéro double saisie.</p></div>
-    <div class="fc"><div class="fci">👥</div><h3>Membres</h3><p>Ajoutez votre team. Invitez par email, gérez les rôles Propriétaire / Créateur et révoquez les accès.</p></div>
-    <div class="fc"><div class="fci">🏢</div><h3>Espaces de travail</h3><p>Créez des workspaces par activité (Sécurité, Intervention…) et organisez vos formulaires.</p></div>
+    <div class="fc"><div class="fci">📄</div><h3>Templates PDF</h3><p>Importez votre PDF ou créez votre formulaire. Aucun logiciel tiers requis.</p></div>
+    <div class="fc"><div class="fci">🎨</div><h3>Builder</h3><p>Glissez-déposez vos champs sur le PDF. 7 types, redimensionnables.</p></div>
+    <div class="fc"><div class="fci">🌐</div><h3>Formulaires publiés</h3><p>Lien public ou privé. Vos équipes remplissent depuis leur téléphone, sans compte.</p></div>
+    <div class="fc"><div class="fci">✍️</div><h3>Signature pad</h3><p>Tracé manuscrit capturé et intégré dans le PDF final.</p></div>
+    <div class="fc"><div class="fci">▦</div><h3>QR code chantier</h3><p>QR code généré automatiquement. Affichez-le sur le chantier, scannez, remplissez.</p></div>
+    <div class="fc"><div class="fci">📥</div><h3>Soumissions</h3><p>Filtrez, éditez, exportez en masse. Vos PDFs prêts à archiver.</p></div>
+    <div class="fc"><div class="fci">🔗</div><h3>App connexions</h3><p>Pré-remplissage automatique depuis vos outils. Zéro double saisie.</p></div>
+    <div class="fc"><div class="fci">👥</div><h3>Membres</h3><p>Invitez votre équipe, gérez les accès. Rôles Propriétaire / Créateur.</p></div>
+    <div class="fc"><div class="fci">🏢</div><h3>Espaces de travail</h3><p>Organisez vos formulaires par chantier ou activité.</p></div>
   </div>
 </section>
 
@@ -1138,12 +1141,12 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   <div style="text-align:center">
     <div class="slbl rv">Simple & rapide</div>
     <h2 class="st rv" style="text-align:center;margin-left:auto;margin-right:auto">Opérationnel en 15 minutes</h2>
-    <p class="ss rv" style="margin:0 auto;text-align:center">Votre premier formulaire est en ligne avant la fin de votre pause.</p>
+    <p class="ss rv" style="margin:0 auto;text-align:center">En ligne avant la fin de votre pause café.</p>
   </div>
   <div class="howg rv">
-    <div class="hstep"><div class="hn">01</div><div class="hic">📤</div><h3>Uploadez votre PDF</h3><p>Importez n'importe quel PDF — rapport, PV de réception, permis de travail. Votre mise en page graphique est préservée à l'identique, page par page.</p></div>
-    <div class="hstep"><div class="hn">02</div><div class="hic">🎨</div><h3>Posez vos champs</h3><p>Glissez-déposez les 7 types de champs sur votre PDF. Configurez la description et si besoin les champs liés à vos outils internes.</p></div>
-    <div class="hstep"><div class="hn">03</div><div class="hic">📥</div><h3>Publiez & collectez</h3><p>Passez en statut "Public". Partagez le lien. Vos équipes remplissent, vous récupérez des PDF complets dans Soumissions — et dans vos outils si connectés.</p></div>
+    <div class="hstep"><div class="hn">01</div><div class="hic">📤</div><h3>Uploadez votre PDF</h3><p>Importez votre PDF existant. Mise en page préservée à l'identique.</p></div>
+    <div class="hstep"><div class="hn">02</div><div class="hic">🎨</div><h3>Posez vos champs</h3><p>Glissez vos champs sur le PDF. Configurez en deux clics.</p></div>
+    <div class="hstep"><div class="hn">03</div><div class="hic">📥</div><h3>Publiez & collectez</h3><p>Partagez le lien ou le QR code. Vos équipes remplissent, vous récupérez les PDF dans Soumissions.</p></div>
   </div>
 </div>
 </section>
@@ -1353,7 +1356,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
 <div class="w">
   <div style="text-align:center">
     <div class="slbl rv">App connexions</div>
-    <h2 class="st rv" style="text-align:center;margin-left:auto;margin-right:auto">Branché à votre écosystème BTP</h2>
+    <h2 class="st rv" style="text-align:center;margin-left:auto;margin-right:auto">Branché à vos outils</h2>
     <p class="ss rv" style="text-align:center;margin:0 auto">BTPForms se connecte à vos outils pour éliminer les doubles saisies et centraliser les documents.</p>
   </div>
   <div class="igrid rv">
@@ -1487,7 +1490,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   <div class="ctabl"></div>
   <div class="ctain">
     <h2 class="rv">Prêt à numériser<br>votre terrain ?</h2>
-    <p class="rv d1">Rejoignez les entreprises BTP qui ont éliminé le papier de leurs chantiers.</p>
+    <p class="rv d1">Des centaines d'entreprises BTP l'utilisent déjà. Essayez gratuitement.</p>
     <div class="ctaacts rv d2">
       <a href="https://btpforms.com" class="bh1">🚀 Essayer gratuitement</a>
       <button onclick="openRappel()" class="bh2" style="cursor:pointer">📞 Être rappelé</button>
