@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BTPForms — Formulaires PDF digitaux pour le BTP</title>
-<link rel="icon" type="image/png" href="/icon.png?v=2">
+<link rel="icon" type="image/png" href="/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
 <style>
@@ -330,11 +330,11 @@ p.ss{font-size:17px;color:var(--muted);line-height:1.72;max-width:500px;font-wei
 /* ── TESTIMONIALS ── */
 .tbg2{background:var(--bgl);border-top:1px solid var(--border)}
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
-.tcard{background:#fff;border:1px solid var(--border);border-radius:var(--rxl);padding:24px;transition:transform .22s,box-shadow .22s}
+.tcard{background:#fff;border:1px solid var(--border);border-radius:var(--rxl);padding:24px;transition:transform .22s,box-shadow .22s;display:flex;flex-direction:column}
 .tcard:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.06)}
 .tstars{color:#f59e0b;font-size:13.5px;letter-spacing:1px;margin-bottom:12px}
-.ttxt{font-size:13.5px;color:#374151;line-height:1.74;margin-bottom:18px;font-weight:300;font-style:italic}
-.tauth{display:flex;align-items:center;gap:10px}
+.ttxt{font-size:13.5px;color:#374151;line-height:1.74;margin-bottom:18px;font-weight:300;font-style:italic;flex:1}
+.tauth{display:flex;align-items:center;gap:10px;margin-top:auto}
 .tav{width:36px;height:36px;border-radius:50%;background:var(--bgl);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;color:var(--P);border:1.5px solid rgba(50,130,222,.18);flex-shrink:0;font-family:'IBM Plex Sans',sans-serif}
 .tnm{font-size:13px;font-weight:700;color:var(--text);font-family:'IBM Plex Sans',sans-serif}
 .trl{font-size:11.5px;color:var(--muted)}
@@ -1444,17 +1444,17 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   <div class="tgrid rv">
     <div class="tcard">
       <div class="tstars">★★★★★</div>
-      <p class="ttxt">"On avait l'habitude d'imprimer nos PV en double exemplaire, les faire signer sur le chantier, puis les scanner le soir. Depuis qu'on utilise BTPForms, tout ça c'est fini. Le PDF est prêt dès que mon gars soumet. Un vrai gain de temps."</p>
+      <p class="ttxt">"Ça marche. Mes techniciens remplissent depuis le chantier, je reçois le PDF dans la foulée."</p>
       <div class="tauth"><div class="tav">TC</div><div><div class="tnm">Thomas C.</div><div class="trl">Conducteur de travaux · Elec BTP</div></div></div>
     </div>
     <div class="tcard">
       <div class="tstars">★★★★★</div>
-      <p class="ttxt">"J'ai pris notre bon de livraison PDF habituel, je l'ai mis dans BTPForms, posé quelques champs dessus, et c'était en ligne. Mes gars remplissent depuis leur téléphone sans se poser de questions. Franchement simple."</p>
+      <p class="ttxt">"J'avais des doutes au départ mais la mise en place a pris moins d'une heure. J'ai pris notre bon de livraison habituel, mis quelques champs, et c'était en ligne. Les gars remplissent depuis leur téléphone, sans se poser de questions."</p>
       <div class="tauth"><div class="tav">KM</div><div><div class="tnm">Karim M.</div><div class="trl">Gérant · KM Plomberie</div></div></div>
     </div>
     <div class="tcard">
       <div class="tstars">★★★★★</div>
-      <p class="ttxt">"Ce qui m'a convaincu c'est le QR code. Je le colle sur la porte du local technique, l'intervenant scanne, remplit sa fiche et signe — même sans compte. Le PDF atterrit dans mon dossier tout seul."</p>
+      <p class="ttxt">"Le QR code sur la porte du local, l'intervenant scanne et signe — même sans compte. Le PDF est dans mon dossier avant qu'il reparte."</p>
       <div class="tauth"><div class="tav">JR</div><div><div class="tnm">Jean-Pierre R.</div><div class="trl">Responsable maintenance · Groupe Immo Sud</div></div></div>
     </div>
   </div>
