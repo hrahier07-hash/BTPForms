@@ -425,7 +425,6 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
     <div class="ni">
       <div class="nl">Ressources <svg class="nl-arr" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M1.5 3.5l3 3 3-3"/></svg></div>
       <div class="dd">
-        <a href="aide.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">📖</div><div><strong>Centre d'aide</strong><span class="dsub">Guides et tutoriels</span></div></a>
         <a href="contact.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">✉️</div><div><strong>Nous contacter</strong><span class="dsub">Réponse sous 24h</span></div></a>
       </div>
     </div>
@@ -484,7 +483,6 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
       <span class="mm-arr"><svg viewBox="0 0 10 10" fill="none" stroke="#374151" stroke-width="2"><path d="M1.5 3.5l3 3 3-3"/></svg></span>
     </button>
     <div class="mm-links">
-      <a href="aide.html" class="mm-link"><div class="mm-link-ico">📖</div><div><strong>Centre d'aide</strong><span>Guides et tutoriels</span></div></a>
       <a href="contact.html" class="mm-link"><div class="mm-link-ico">✉️</div><div><strong>Nous contacter</strong><span>Réponse sous 24h</span></div></a>
     </div>
   </div>
@@ -508,16 +506,18 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
       <div class="form-wrap">
         <h2 class="sec-h" style="margin-bottom:28px">Envoyez-nous un message</h2>
         <div class="form-2col">
-          <div class="f-grp"><label class="f-lbl">Prénom</label><input type="text" class="f-inp" placeholder="Jean"></div>
-          <div class="f-grp"><label class="f-lbl">Nom</label><input type="text" class="f-inp" placeholder="Dupont"></div>
+          <div class="f-grp"><label class="f-lbl">Prénom <span style="color:#3282DE">*</span></label><input id="c-prenom" type="text" class="f-inp" placeholder="Jean"></div>
+          <div class="f-grp"><label class="f-lbl">Nom <span style="color:#3282DE">*</span></label><input id="c-nom" type="text" class="f-inp" placeholder="Dupont"></div>
         </div>
-        <div class="f-grp"><label class="f-lbl">Email professionnel</label><input type="email" class="f-inp" placeholder="jean.dupont@entreprise.fr"></div>
-        <div class="f-grp"><label class="f-lbl">Entreprise</label><input type="text" class="f-inp" placeholder="Nom de votre société"></div>
-        <div class="f-grp"><label class="f-lbl">Sujet</label>
-          <select class="f-inp"><option>Question sur les fonctionnalités</option><option>Demande de démo</option><option>Support technique</option><option>Facturation / abonnement</option><option>Partenariat</option></select>
+        <div class="f-grp"><label class="f-lbl">Email professionnel <span style="color:#3282DE">*</span></label><input id="c-email" type="email" class="f-inp" placeholder="jean.dupont@entreprise.fr"></div>
+        <div class="f-grp"><label class="f-lbl">Entreprise <span style="color:#3282DE">*</span></label><input id="c-entreprise" type="text" class="f-inp" placeholder="Nom de votre société"></div>
+        <div class="f-grp"><label class="f-lbl">Sujet <span style="color:#3282DE">*</span></label>
+          <select id="c-sujet" class="f-inp"><option>Question sur les fonctionnalités</option><option>Demande de démo</option><option>Support technique</option><option>Facturation / abonnement</option><option>Partenariat</option></select>
         </div>
-        <div class="f-grp"><label class="f-lbl">Message</label><textarea class="f-inp f-textarea" placeholder="Décrivez votre besoin..."></textarea></div>
-        <button class="f-submit" onclick="this.textContent='Message envoyé ✓';this.style.background='#16a34a'">Envoyer le message</button>
+        <div class="f-grp"><label class="f-lbl">Message</label><textarea id="c-msg" class="f-inp f-textarea" placeholder="Décrivez votre besoin..."></textarea></div>
+        <div id="c-error" style="display:none;background:#fff0f0;border:1px solid #fecdd3;border-radius:8px;padding:10px 14px;font-size:13px;color:#dc2626;margin-bottom:14px"></div>
+        <div id="c-success" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 16px;font-size:14px;color:#166534;margin-bottom:14px">✅ Message envoyé ! Nous vous répondons sous 24h ouvrées.</div>
+        <button id="c-btn" class="f-submit" onclick="sendContact()">Envoyer le message</button>
       </div>
       <div>
         <h2 class="sec-h" style="margin-bottom:24px">Autres façons de nous joindre</h2>
@@ -525,15 +525,10 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
           <div style="background:var(--bgl);border:1px solid var(--border);border-radius:14px;padding:22px">
             <div style="font-size:22px;margin-bottom:10px">📧</div>
             <h3 style="font-size:15px;font-weight:700;margin-bottom:6px">Email</h3>
-            <p style="font-size:14px;color:var(--muted);font-weight:300"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e6d61607a6f6d7a4e6c7a7e68617c637d206d6163">[email&#160;protected]</a></p>
+            <p style="font-size:14px;color:var(--muted);font-weight:300"><a href="mailto:hugo@astrova.fr" style="color:var(--P)">hugo@astrova.fr</a><br><a href="mailto:thibaud@astrova.fr" style="color:var(--P)">thibaud@astrova.fr</a></p>
             <p style="font-size:13px;color:var(--muted);font-weight:300;margin-top:4px">Réponse sous 24h ouvrées</p>
           </div>
-          <div style="background:var(--bgl);border:1px solid var(--border);border-radius:14px;padding:22px">
-            <div style="font-size:22px;margin-bottom:10px">▶️</div>
-            <h3 style="font-size:15px;font-weight:700;margin-bottom:6px">Démo en direct</h3>
-            <p style="font-size:14px;color:var(--muted);font-weight:300;margin-bottom:12px">30 minutes pour découvrir BTPForms avec un de nos experts.</p>
-            <a href="https://btpforms.com" class="btn-p" style="font-size:13.5px;padding:9px 18px">Réserver une démo</a>
-          </div>
+
           <div style="background:var(--bgl);border:1px solid var(--border);border-radius:14px;padding:22px">
             <div style="font-size:22px;margin-bottom:10px">📖</div>
             <h3 style="font-size:15px;font-weight:700;margin-bottom:6px">Centre d'aide</h3>
@@ -612,7 +607,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   </div>
 </div>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const nav=document.getElementById('nav');
 function upNav(){nav.classList.toggle('sc',window.scrollY>20)}
 upNav();window.addEventListener('scroll',upNav,{passive:true});
