@@ -230,17 +230,91 @@
   ];
 
   /* ── MATCHING ── */
+
+  // Normalisation : minuscules, sans accents, sans ponctuation
+  function normalizeText(str) {
+    return (str || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^\w\s]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  // Table de synonymes (clé = tag canonique)
+  const SYNONYMS = {
+    prix:       ['tarif', 'cout', 'combien', 'abonnement', 'payer', 'forfait'],
+    test:       ['essai', 'demo', 'tester', 'gratuit', 'trial'],
+    telephone:  ['mobile', 'tel', 'smartphone', 'iphone', 'android'],
+    formulaire: ['form', 'fiche', 'document', 'modele'],
+    contact:    ['support', 'email', 'joindre', 'aide', 'parler'],
+    connexion:  ['integration', 'api', 'connecter', 'synchroniser'],
+    securite:   ['rgpd', 'protection', 'confidentiel', 'safe'],
+    signature:  ['signer', 'emargement'],
+  };
+
+  // Distance de Levenshtein
+  function levenshtein(a, b) {
+    const matrix = [];
+    for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+    for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        matrix[i][j] = b[i - 1] === a[j - 1]
+          ? matrix[i - 1][j - 1]
+          : Math.min(
+              matrix[i - 1][j - 1] + 1,
+              matrix[i][j - 1]     + 1,
+              matrix[i - 1][j]     + 1
+            );
+      }
+    }
+    return matrix[b.length][a.length];
+  }
+
+  // Similarité 0→1 entre deux mots
+  function wordSimilar(a, b) {
+    const maxLen = Math.max(a.length, b.length);
+    if (maxLen === 0) return 1;
+    return 1 - levenshtein(a, b) / maxLen;
+  }
+
+  // Score d'un item KB contre les mots de la saisie
+  function scoreMatch(inputWords, tags) {
+    let score = 0;
+    for (let tag of tags) {
+      tag = normalizeText(tag);
+      for (const word of inputWords) {
+        const sim = wordSimilar(word, tag);
+        if (sim === 1)        score += 3;   // correspondance exacte
+        else if (sim > 0.85)  score += 2;   // très proche (typo)
+        else if (sim > 0.75)  score += 1;   // approchant
+
+        // Bonus synonymes
+        if (SYNONYMS[tag]) {
+          for (const syn of SYNONYMS[tag]) {
+            if (wordSimilar(word, normalizeText(syn)) > 0.75) {
+              score += 1.5;
+            }
+          }
+        }
+      }
+    }
+    return score;
+  }
+
   function findAnswer(input) {
-    const q = input.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-z0-9\s]/g, ' ');
+    const normalized = normalizeText(input);
+    const words = normalized.split(' ').filter(w => w.length > 1);
 
     let best = null, bestScore = 0;
     for (const item of KB) {
-      const score = item.tags.reduce((s, tag) => s + (q.includes(tag) ? 1 : 0), 0);
+      const score = scoreMatch(words, item.tags);
       if (score > bestScore) { bestScore = score; best = item; }
     }
-    if (bestScore === 0) return null;
+    // Seuil minimal pour éviter les faux positifs
+    if (bestScore < 1.5) return null;
     return best.response;
   }
 
