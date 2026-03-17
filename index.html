@@ -520,7 +520,7 @@ footer{background:var(--bgl);border-top:1px solid var(--border);padding:60px 0 3
 
 /* ══════════════ TEMPLATES SECTION ══════════════ */
 .tpl-section{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.tpl-carousel-outer{position:relative;margin-top:52px}
+.tpl-carousel-outer{position:relative;margin-top:52px;overflow:hidden;}
 /* Fade masks */
 .tpl-carousel-outer::before,.tpl-carousel-outer::after{
   content:'';position:absolute;top:0;bottom:16px;width:72px;z-index:3;pointer-events:none;
@@ -530,13 +530,15 @@ footer{background:var(--bgl);border-top:1px solid var(--border);padding:60px 0 3
 /* Track */
 .tpl-track{
   display:flex;gap:16px;
-  padding:4px 64px 20px;
-  overflow-x:auto;-webkit-overflow-scrolling:touch;
-  scrollbar-width:none;scroll-behavior:smooth;
+  padding:4px 0 20px;
+  overflow:visible;
+  scrollbar-width:none;
   cursor:grab;
+  will-change:transform;
+  width:max-content;
 }
 .tpl-track::-webkit-scrollbar{display:none}
-.tpl-track.dragging{cursor:grabbing;scroll-behavior:auto;user-select:none}
+.tpl-track.dragging{cursor:grabbing;user-select:none}
 /* Card */
 .tpl-card{
   background:#fff;border:1.5px solid var(--border);border-radius:16px;
@@ -583,12 +585,12 @@ footer{background:var(--bgl);border-top:1px solid var(--border);padding:60px 0 3
 .tpl-pill{background:rgba(255,255,255,.25);color:#fff;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:8px;margin-left:4px}
 /* Responsive */
 @media(max-width:900px){
-  .tpl-track{padding:4px 36px 20px;gap:14px}
+  .tpl-track{gap:14px}
   .tpl-carousel-outer::before,.tpl-carousel-outer::after{width:44px}
 }
 @media(max-width:640px){
   .tpl-card{min-width:210px;max-width:210px}
-  .tpl-track{padding:4px 20px 20px;gap:12px}
+  .tpl-track{gap:12px}
   .tpl-carousel-outer::before,.tpl-carousel-outer::after{width:28px}
   .tpl-preview{height:120px}
   .tpl-cta-row{flex-direction:column;align-items:stretch}
@@ -2004,22 +2006,76 @@ function mmToggle(btn){
 </script>
 <script src="chatbot.js"></script>
 <script>
-// ── Templates carousel drag-to-scroll ──────────────────────────────────
+// ── Templates carousel — auto-scroll infini ──────────────────────────────
 (function(){
   var track = document.getElementById('tpl-track');
   if(!track) return;
-  var isDown=false, startX, scrollLeft;
+
+  // Duplicate cards for seamless loop
+  var origCards = Array.from(track.children);
+  origCards.forEach(function(card){
+    track.appendChild(card.cloneNode(true));
+  });
+
+  var speed       = 0.6;   // px per frame — lent
+  var pos         = 0;
+  var paused      = false;
+  var raf;
+  var halfWidth;
+
+  function getHalf(){
+    // Width of the original set (first N cards)
+    var total = 0;
+    var n = origCards.length;
+    for(var i=0;i<n;i++) total += track.children[i].offsetWidth + 16; // gap 16
+    return total;
+  }
+
+  function step(){
+    if(!paused){
+      pos += speed;
+      halfWidth = getHalf();
+      if(pos >= halfWidth) pos = 0;
+      track.style.transform = 'translateX(-' + pos + 'px)';
+    }
+    raf = requestAnimationFrame(step);
+  }
+
+  // Pause on hover (desktop)
+  track.addEventListener('mouseenter', function(){ paused = true; });
+  track.addEventListener('mouseleave', function(){ paused = false; });
+
+  // Pause on touch (mobile)
+  track.addEventListener('touchstart', function(){ paused = true; }, {passive:true});
+  track.addEventListener('touchend',   function(){ paused = false; });
+
+  // Manual drag-to-scroll (desktop)
+  var isDown=false, startX, startPos;
   track.addEventListener('mousedown',function(e){
-    isDown=true; track.classList.add('dragging');
-    startX=e.pageX - track.offsetLeft; scrollLeft=track.scrollLeft;
+    isDown=true; paused=true;
+    track.classList.add('dragging');
+    startX=e.pageX; startPos=pos;
   });
-  track.addEventListener('mouseleave',function(){isDown=false;track.classList.remove('dragging')});
-  track.addEventListener('mouseup',function(){isDown=false;track.classList.remove('dragging')});
-  track.addEventListener('mousemove',function(e){
-    if(!isDown)return; e.preventDefault();
-    var x=e.pageX - track.offsetLeft;
-    track.scrollLeft = scrollLeft - (x - startX)*1.2;
+  document.addEventListener('mouseup',function(){
+    if(!isDown) return;
+    isDown=false; paused=false;
+    track.classList.remove('dragging');
   });
+  document.addEventListener('mousemove',function(e){
+    if(!isDown) return; e.preventDefault();
+    pos = startPos - (e.pageX - startX) * 1.2;
+    halfWidth = getHalf();
+    if(pos < 0) pos = 0;
+    if(pos >= halfWidth) pos = halfWidth - 1;
+    track.style.transform = 'translateX(-' + pos + 'px)';
+  });
+
+  // Init track style for transform-based scrolling
+  track.style.overflow  = 'visible';
+  track.style.cursor    = 'grab';
+  track.parentElement.style.overflow = 'hidden';
+
+  raf = requestAnimationFrame(step);
 })();
 </script>
 
