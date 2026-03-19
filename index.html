@@ -872,6 +872,10 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
       <a href="fonctionnalites-app-connexions.html" class="mm-link"><div class="mm-link-ico" style="background:rgba(47,57,112,.08)">🔗</div><div><strong>App connexions</strong><span>Connectez vos outils internes</span></div></a>
       <a href="fonctionnalites-membres.html" class="mm-link"><div class="mm-link-ico" style="background:#f5f3ff">👥</div><div><strong>Membres</strong><span>Rôles et invitations</span></div></a>
       <a href="fonctionnalites-workspaces.html" class="mm-link"><div class="mm-link-ico">🏢</div><div><strong>Espaces de travail</strong><span>Workspaces par projet</span></div></a>
+      <div style="font-size:10.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:10px 10px 6px">Nouveautés</div>
+      <a href="#automatisations" class="mm-link"><div class="mm-link-ico" style="background:#fdf4ff">⚡</div><div><strong>Automatisations</strong><span>Email PDF & webhooks auto</span></div></a>
+      <a href="#notes-vocales" class="mm-link"><div class="mm-link-ico" style="background:#f0fdf4">🎙️</div><div><strong>Notes vocales</strong><span>Dictez vos observations</span></div></a>
+      <a href="#import-donnees" class="mm-link"><div class="mm-link-ico" style="background:#f0fdf4">📊</div><div><strong>Import Excel / Sheets</strong><span>Vos listes dans vos champs</span></div></a>
     </div>
   </div>
   <!-- Usages -->
@@ -1081,9 +1085,9 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
       <p>Importez votre PDF existant et posez vos champs dessus en glisser-déposer. Ou construisez votre formulaire de zéro. 7 types de champs, aucune compétence technique requise.</p>
       <ul class="fbl">
         <li>Texte libre, Zone de texte, Date, Case à cocher</li>
-        <li>Liste déroulante, Image, Signature en paraphe</li>
-        <li>Ordre des champs personnalisable par page</li>
-              <li>QR code généré automatiquement, imprimable</li>
+        <li>Liste déroulante, Image, Signature, Note vocale</li>
+        <li>Dessin, Calculateur, Liste multi-sélection</li>
+        <li>QR code généré automatiquement, imprimable</li>
       </ul>
     </div>
     <div class="fbv rv">
@@ -1434,6 +1438,177 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
 </div>
 </section>
 
+<!-- ══ AUTOMATISATIONS ══ -->
+<section class="hbg" id="automatisations">
+<div class="w">
+  <div style="text-align:center">
+    <div class="slbl rv">Automatisations</div>
+    <h2 class="st rv" style="text-align:center;margin-left:auto;margin-right:auto">Chaque soumission déclenche ce que vous voulez</h2>
+    <p class="ss rv" style="margin:0 auto;text-align:center">Envoi d'email, webhook, notification — configurez vos automatisations en glisser-déposer, sans coder.</p>
+  </div>
+
+  <div class="fb rv" style="margin-top:52px;padding-top:0;border-top:none">
+    <div class="fbt">
+      <div class="badge-s"><span class="bdot"></span>Comme Make, en natif</div>
+      <h2>Automatisez sans quitter BTPForms</h2>
+      <p>Dès qu'un formulaire est soumis, déclenchez automatiquement l'envoi d'un email avec le PDF en pièce jointe, un webhook vers votre outil interne, ou les deux. Chaque flux se configure visuellement en quelques clics.</p>
+      <ul class="fbl">
+        <li>Déclencheur : nouvelle soumission</li>
+        <li>Email PDF automatique vers un ou plusieurs destinataires</li>
+        <li>Webhook sortant vers n'importe quel outil (Make, Zapier, votre SI)</li>
+        <li>Jusqu'à 2 emails et 2 webhooks par formulaire</li>
+        <li>Aucune ligne de code requise</li>
+      </ul>
+    </div>
+    <div class="fbv rv">
+      <div class="fbvi" style="padding:28px">
+        <!-- Automation flow visual -->
+        <div class="vc" style="padding:20px">
+          <div class="vch" style="margin-bottom:18px">
+            <span class="vct">Automatisations — Fiche intervention</span>
+            <span class="tg tgp">Actif</span>
+          </div>
+          <!-- Flow nodes -->
+          <div style="display:flex;align-items:center;gap:0;justify-content:center;padding:8px 0">
+            <!-- Trigger -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+              <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 14px rgba(124,58,237,.3)">⚡</div>
+              <span style="font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Soumission</span>
+            </div>
+            <!-- Arrow -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 10px;margin-bottom:18px">
+              <div style="width:32px;height:1.5px;background:var(--border);position:relative">
+                <div style="position:absolute;right:-1px;top:-3px;border-left:6px solid var(--border);border-top:4px solid transparent;border-bottom:4px solid transparent"></div>
+              </div>
+            </div>
+            <!-- Email -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+              <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0ea5e9,#38bdf8);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 14px rgba(14,165,233,.3)">✉️</div>
+              <span style="font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Email PDF</span>
+            </div>
+            <!-- Arrow -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 10px;margin-bottom:18px">
+              <div style="width:32px;height:1.5px;background:var(--border);position:relative">
+                <div style="position:absolute;right:-1px;top:-3px;border-left:6px solid var(--border);border-top:4px solid transparent;border-bottom:4px solid transparent"></div>
+              </div>
+            </div>
+            <!-- Webhook -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+              <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#f97316,#fb923c);display:flex;align-items:center;justify-content:position:relative;font-size:22px;box-shadow:0 4px 14px rgba(249,115,22,.3);align-items:center;justify-content:center">🔗</div>
+              <span style="font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Webhook</span>
+            </div>
+            <!-- Arrow -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 10px;margin-bottom:18px">
+              <div style="width:32px;height:1.5px;background:var(--border);border-style:dashed;position:relative">
+                <div style="position:absolute;right:-1px;top:-3px;border-left:6px solid var(--border);border-top:4px solid transparent;border-bottom:4px solid transparent"></div>
+              </div>
+            </div>
+            <!-- Add -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+              <div style="width:52px;height:52px;border-radius:50%;border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--muted)">+</div>
+              <span style="font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Ajouter</span>
+            </div>
+          </div>
+          <!-- Description -->
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);line-height:1.6">
+            <span style="font-weight:600;color:var(--text)">Déclencheur :</span> Cette automatisation se déclenche à chaque nouvelle soumission du formulaire.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- ══ NOTES VOCALES ══ -->
+<section id="notes-vocales">
+<div class="w">
+  <div class="fb fl rv" style="padding-top:72px;border-top:none">
+    <div class="fbt">
+      <div class="badge-s"><span class="bdot"></span>Notes vocales</div>
+      <h2>Dictez vos observations sur le chantier</h2>
+      <p>Un technicien en train de travailler n'a pas toujours les mains libres pour taper. Avec le champ note vocale, il enregistre ses observations à la voix directement depuis le formulaire. L'audio est intégré dans la soumission et accessible depuis le tableau de bord.</p>
+      <ul class="fbl">
+        <li>Enregistrement audio directement depuis le formulaire</li>
+        <li>Compatible tous smartphones, sans application</li>
+        <li>Fichier audio attaché à la soumission</li>
+        <li>Idéal pour les observations longues ou les mains occupées</li>
+      </ul>
+    </div>
+    <div class="fbv rv">
+      <div class="fbvi" style="padding:28px">
+        <div class="vc">
+          <div class="vch" style="margin-bottom:14px">
+            <span class="vct">Rapport d'intervention — Observations</span>
+            <span class="tg tgg">En cours</span>
+          </div>
+          <!-- Audio recorder visual -->
+          <div style="background:var(--bgl);border-radius:var(--r);padding:16px;text-align:center;margin-bottom:12px">
+            <div style="width:56px;height:56px;border-radius:50%;background:var(--P);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:24px;box-shadow:0 4px 16px rgba(50,130,222,.3)">🎙️</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">Note vocale</div>
+            <div style="font-size:12px;color:var(--muted)">Appuyez pour enregistrer</div>
+          </div>
+          <!-- Existing audio note -->
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--r);padding:12px;display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:50%;background:#16a34a;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">▶</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:600;color:#166534">Observation_terrain.mp3</div>
+              <div style="height:4px;background:#bbf7d0;border-radius:2px;margin-top:6px;overflow:hidden"><div style="width:40%;height:100%;background:#16a34a;border-radius:2px"></div></div>
+            </div>
+            <div style="font-size:11px;color:#16a34a;font-weight:600">0:23</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- ══ EXCEL / SHEETS ══ -->
+<section class="hbg" id="import-donnees">
+<div class="w">
+  <div class="fb rv" style="margin-top:52px;padding-top:0;border-top:none">
+    <div class="fbt">
+      <div class="badge-s"><span class="bdot"></span>Import de données</div>
+      <h2>Importez vos données Excel ou Google Sheets dans vos champs</h2>
+      <p>Vous avez déjà vos listes de matériel, vos références chantier ou vos équipements dans un tableur ? Connectez votre fichier Excel ou Google Sheets et ces données alimentent automatiquement les champs de votre formulaire — liste déroulante, multi-sélection, autocomplétion.</p>
+      <ul class="fbl">
+        <li>Import depuis Excel (.xlsx) ou Google Sheets</li>
+        <li>Listes de matériel, équipements, références chantier…</li>
+        <li>Champ Liste (Google Sheet) ou Multi-sélection dynamique</li>
+        <li>Mise à jour automatique du formulaire si le tableur change</li>
+        <li>Zéro double saisie, zéro erreur de frappe</li>
+      </ul>
+    </div>
+    <div class="fbv rv">
+      <div class="fbvi" style="padding:28px">
+        <div class="vc">
+          <div class="vch" style="margin-bottom:14px">
+            <span class="vct">Bon de livraison — Matériaux</span>
+            <span class="tg" style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">Google Sheets</span>
+          </div>
+          <!-- Sheet source -->
+          <div style="background:var(--bgl);border-radius:var(--r);padding:12px;margin-bottom:12px;display:flex;align-items:center;gap:10px">
+            <div style="width:32px;height:32px;border-radius:8px;background:#16a34a;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">📊</div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--text)">Catalogue-materiaux-2025.xlsx</div>
+              <div style="font-size:11px;color:var(--muted)">347 références · Mis à jour il y a 2h</div>
+            </div>
+          </div>
+          <!-- Field rows from the sheet -->
+          <div class="vcr"><div class="vci" style="background:#f0fdf4;font-size:11px;color:#16a34a;font-weight:700">▾</div><div style="flex:1"><div class="vcl">Béton C25/30 — Sac 35kg</div><div class="vcs">Référence : MAT-001 · Unité : sac</div></div><span class="vcv" style="color:#16a34a">✓</span></div>
+          <div class="vcr"><div class="vci" style="background:#f0fdf4;font-size:11px;color:#16a34a;font-weight:700">▾</div><div style="flex:1"><div class="vcl">Enduit de façade — Seau 20kg</div><div class="vcs">Référence : MAT-047 · Unité : seau</div></div><span class="vcv" style="color:var(--muted)">—</span></div>
+          <div class="vcr" style="border-bottom:none"><div class="vci" style="background:#f0fdf4;font-size:11px;color:#16a34a;font-weight:700">▾</div><div style="flex:1"><div class="vcl">Treillis soudé 150×150</div><div class="vcs">Référence : MAT-112 · Unité : m²</div></div><span class="vcv" style="color:var(--muted)">—</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
 <!-- ══ INTEGRATIONS ══ -->
 <section class="ibg">
 <div class="w">
@@ -1445,8 +1620,8 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   <div class="igrid rv">
     <div class="icard"><div class="iico" style="background:rgba(50,130,222,.14)">🏗</div><div class="inm">Logiciels BTP</div><div class="ids">Planning, chantiers, GED</div></div>
     <div class="icard"><div class="iico" style="background:rgba(99,102,241,.14)">👥</div><div class="inm">CRM & ERP</div><div class="ids">Clients, projets, devis</div></div>
+    <div class="icard"><div class="iico" style="background:rgba(16,185,129,.12)">📊</div><div class="inm">Excel & Sheets</div><div class="ids">Listes, matériel, références</div></div>
     <div class="icard"><div class="iico" style="background:rgba(16,185,129,.12)">⚡</div><div class="inm">API & Webhooks</div><div class="ids">Connexion sur mesure</div></div>
-    <div class="icard" style="border-style:dashed"><div class="iico" style="background:rgba(255,255,255,.05)">＋</div><div class="inm" style="color:rgba(255,255,255,.28)">Bientôt</div><div class="ids">D'autres connecteurs arrivent</div></div>
   </div>
 </div>
 </section>
@@ -1489,7 +1664,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   </div>
   <div class="flist rv">
     <div class="fi"><div class="fq" onclick="faq(this)"><h3>Est-ce qu'on peut l'utiliser sans brancher un autre logiciel ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>Oui, complètement. BTPForms marche tout seul. Les App connexions (pour relier votre logiciel de gestion) c'est en option, uniquement si vous en avez besoin. La plupart des gens commencent sans et ajoutent une connexion plus tard.</p></div></div>
-    <div class="fi"><div class="fq" onclick="faq(this)"><h3>Quels champs je peux mettre sur mon formulaire ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>Texte libre, zone de texte longue, date, case à cocher, liste déroulante, photo et signature. Ça couvre la majorité des besoins terrain. Si vous connectez un logiciel via App connexions, des champs supplémentaires apparaissent pour récupérer automatiquement les infos (client, adresse, référence chantier…).</p></div></div>
+    <div class="fi"><div class="fq" onclick="faq(this)"><h3>Quels champs je peux mettre sur mon formulaire ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>Texte libre, zone de texte, date, case à cocher, liste déroulante, liste multi-sélection, photo, note vocale, dessin, calculateur et signature. Si vous connectez un outil via App connexions ou importez des données Excel / Google Sheets, des champs supplémentaires apparaissent pour récupérer automatiquement les infos (client, liste de matériel, référence chantier…).</p></div></div>
     <div class="fi"><div class="fq" onclick="faq(this)"><h3>L'essai gratuit, c'est comment ça marche ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>7 jours avec tout débloqué, jusqu'à 50 soumissions. Pas de carte bleue demandée. Si vous ne souscrivez pas à la fin, votre compte reste accessible en lecture seule — vos données ne disparaissent pas.</p></div></div>
     <div class="fi"><div class="fq" onclick="faq(this)"><h3>Mes gars sur le terrain ont besoin d'un compte pour remplir ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>Non. Ils reçoivent un lien (ou scannent un QR code), ils ouvrent ça dans leur navigateur et c'est parti. Aucune inscription, aucune appli à télécharger. Ça marche sur n'importe quel téléphone.</p></div></div>
     <div class="fi"><div class="fq" onclick="faq(this)"><h3>On est plusieurs dans l'équipe, comment on gère ça ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>Vous invitez vos collègues par email depuis la section Membres. Vous choisissez qui peut créer des formulaires et qui peut juste consulter. Vous pouvez aussi créer plusieurs espaces de travail pour séparer les activités si besoin (chantiers, sécurité, admin…).</p></div></div>
