@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════
-   BTPForms Chatbot Widget
+   WebForms Chatbot Widget
    À intégrer sur toutes les pages du site
    ══════════════════════════════════════════════ */
 
@@ -43,7 +43,7 @@
     },
     {
       tags: ['champs', 'type', 'signature', 'photo', 'date', 'texte', 'liste', 'checkbox', 'case'],
-      response: `BTPForms propose <b>7 types de champs</b> :<br><br>
+      response: `WebForms propose <b>7 types de champs</b> :<br><br>
         📝 Texte libre<br>
         📄 Zone de texte longue<br>
         📅 Date<br>
@@ -51,7 +51,7 @@
         🔽 Liste déroulante<br>
         📷 Photo<br>
         ✍️ Signature<br><br>
-        Avec une <b>App connexion</b> (Plan Entreprise), des champs auto remplis apparaissent : client, adresse, référence chantier…`
+        Avec une <b>App connexion</b> (Plan Entreprise), des champs auto remplis apparaissent : client, adresse, référence projet…`
     },
     {
       tags: ['membres', 'utilisateurs', 'roles', 'rôles', 'inviter', 'invitation', 'equipe', 'équipe', 'workspace', 'espace'],
@@ -59,12 +59,12 @@
         👤 <b>Propriétaire</b> : accès complet<br>
         🎨 <b>Créateur</b> : peut créer des formulaires<br>
         👁️ <b>Lecteur</b> : consultation uniquement<br><br>
-        Vous pouvez aussi créer plusieurs <b>espaces de travail</b> pour séparer vos activités (chantiers, sécurité, admin…).`
+        Vous pouvez aussi créer plusieurs <b>espaces de travail</b> pour séparer vos activités (projets, sécurité, admin…).`
     },
     {
       tags: ['connexion', 'integration', 'api', 'logiciel', 'connecter', 'synchroniser', 'externe'],
-      response: `Les <b>App connexions</b> permettent de relier BTPForms à vos outils internes.<br><br>
-        🔗 Récupération auto : client, adresse, référence chantier<br>
+      response: `Les <b>App connexions</b> permettent de relier WebForms à vos outils internes.<br><br>
+        🔗 Récupération auto : client, adresse, référence projet<br>
         📤 Envoi automatique du PDF vers votre logiciel<br>
         🔌 API disponible sur le <b>Pack Entreprise</b><br><br>
         La plupart des utilisateurs démarrent sans connexion et l'ajoutent plus tard selon les besoins.`
@@ -87,7 +87,7 @@
     },
     {
       tags: ['sans', 'seul', 'indépendant', 'independant', 'logiciel', 'branchement', 'brancher', 'standalone'],
-      response: `Oui, BTPForms fonctionne <b>complètement en autonome</b>.<br><br>
+      response: `Oui, WebForms fonctionne <b>complètement en autonome</b>.<br><br>
         Les App connexions sont optionnelles — la plupart des utilisateurs démarrent sans et les ajoutent plus tard si besoin.<br><br>
         Pas besoin de logiciel existant pour commencer.`
     },
@@ -99,9 +99,9 @@
         Pour une démo ou un devis Entreprise, écrivez-nous directement !`
     },
     {
-      tags: ['usages', 'cas', 'exemple', 'rapport', 'reception', 'chantier', 'securite', 'sécurité', 'logistique', 'presence', 'présence'],
-      response: `BTPForms est utilisé pour :<br><br>
-        🏗️ <b>Suivi de chantier</b><br>
+      tags: ['usages', 'cas', 'exemple', 'rapport', 'reception', 'projet', 'securite', 'sécurité', 'logistique', 'presence', 'présence'],
+      response: `WebForms est utilisé pour :<br><br>
+        🏗️ <b>Suivi de terrain</b><br>
         ✅ <b>PV de réception</b><br>
         📋 <b>Rapport d'intervention</b><br>
         🚧 <b>Fiche sécurité / inspection</b><br>
@@ -119,14 +119,14 @@
     },
   /* ── Q&R ÉTENDUES ── */
     /* ── 100 Q&R ADDITIONNELLES ── */
-    { tags: ['bonjour', 'salut', 'hello', 'bonsoir', 'hey'], response: `Bonjour 👋 Je suis l'assistant BTPForms. Comment puis-je vous aider ?` },
-    { tags: ['ca va', 'comment vas', 'vous allez'], response: `Très bien merci ! Je suis là pour répondre à vos questions sur BTPForms.` },
-    { tags: ['appelles', 'nom', 'qui es', 'qui etes'], response: `Je suis l'assistant BTPForms, ici pour répondre à toutes vos questions.` },
-    { tags: ['humain', 'robot', 'bot', 'automatise', 'automatisé'], response: `Non, je suis un assistant automatisé qui aide à répondre aux questions sur BTPForms.` },
-    { tags: ['cree', 'créé', 'fondé', 'fonde', 'startup', 'saas', 'quoi exactement'], response: `BTPForms est une solution SaaS créée pour digitaliser les formulaires terrain des entreprises du BTP.` },
-    { tags: ['sert', 'utilite', 'utilité', 'objectif', 'but', 'application'], response: `BTPForms permet aux équipes terrain de remplir des formulaires depuis leur téléphone et de générer automatiquement des PDF.` },
+    { tags: ['bonjour', 'salut', 'hello', 'bonsoir', 'hey'], response: `Bonjour 👋 Je suis l'assistant WebForms. Comment puis-je vous aider ?` },
+    { tags: ['ca va', 'comment vas', 'vous allez'], response: `Très bien merci ! Je suis là pour répondre à vos questions sur WebForms.` },
+    { tags: ['appelles', 'nom', 'qui es', 'qui etes'], response: `Je suis l'assistant WebForms, ici pour répondre à toutes vos questions.` },
+    { tags: ['humain', 'robot', 'bot', 'automatise', 'automatisé'], response: `Non, je suis un assistant automatisé qui aide à répondre aux questions sur WebForms.` },
+    { tags: ['cree', 'créé', 'fondé', 'fonde', 'startup', 'saas', 'quoi exactement'], response: `WebForms est une solution SaaS créée pour digitaliser les formulaires terrain des entreprises des équipes terrain.` },
+    { tags: ['sert', 'utilite', 'utilité', 'objectif', 'but', 'application'], response: `WebForms permet aux équipes terrain de remplir des formulaires depuis leur téléphone et de générer automatiquement des PDF.` },
     { tags: ['mobile', 'appli', 'iphone', 'android', 'smartphone'], response: `Les formulaires fonctionnent dans le navigateur du smartphone — aucune appli à installer.` },
-    { tags: ['disponible', 'france', 'pays', 'region', 'région'], response: `Oui, BTPForms est disponible pour les entreprises en France.` },
+    { tags: ['disponible', 'france', 'pays', 'region', 'région'], response: `Oui, WebForms est disponible pour les entreprises en France.` },
     { tags: ['parler', 'joindre', 'equipe', 'équipe'], response: `Notre équipe répond sous 24h. Consultez la <a href="contact.html" style="color:#3282DE;text-decoration:underline">page contact</a> ou demandez un rappel depuis le site.` },
     { tags: ['tester', 'essayer', 'decouvrir', 'découvrir', 'commencer'], response: `Oui ! L'essai gratuit dure 7 jours avec toutes les fonctionnalités. <b>Aucune carte bancaire requise.</b>` },
     { tags: ['complique', 'compliqué', 'difficile', 'facile', 'simple', 'prise en main', 'apprendre'], response: `L'application est conçue pour être simple. La plupart des utilisateurs prennent en main l'outil en quelques minutes.` },
@@ -144,7 +144,7 @@
     { tags: ['lien', 'url', 'lien public', 'acces public'], response: `Chaque formulaire dispose d'un lien public ou privé que vous pouvez partager facilement.` },
     { tags: ['flasher', 'scanner qr', 'qr code formulaire'], response: `Un QR code est généré automatiquement. Imprimez-le, collez-le sur site — vos équipes scannent et remplissent depuis leur téléphone.` },
     { tags: ['hors ligne', 'offline', 'sans connexion', 'sans internet'], response: `Certaines fonctionnalités peuvent fonctionner hors ligne selon la configuration. Contactez-nous pour plus d'infos.` },
-    { tags: ['plusieurs chantier', 'multi chantier', 'projets multiples'], response: `Oui, vous pouvez gérer plusieurs projets depuis votre espace de travail.` },
+    { tags: ['plusieurs projets', 'multi projet', 'projets multiples'], response: `Oui, vous pouvez gérer plusieurs projets depuis votre espace de travail.` },
     { tags: ['modifier formulaire', 'editer formulaire', 'changer formulaire'], response: `Oui, vous pouvez modifier vos formulaires à tout moment depuis votre tableau de bord.` },
     { tags: ['supprimer formulaire', 'effacer formulaire'], response: `Oui, les formulaires et soumissions peuvent être supprimés depuis votre espace.` },
     { tags: ['dupliquer', 'clone', 'copier formulaire', 'reproduire'], response: `Oui, vous pouvez cloner un formulaire existant pour le réutiliser rapidement.` },
@@ -184,17 +184,17 @@
     { tags: ['signaler bug', 'reporter bug', 'anomalie'], response: `Signalez le problème via la <a href="contact.html" style="color:#3282DE;text-decoration:underline">page contact</a> avec une description et une capture si possible.` },
     { tags: ['suggestion', 'idee', 'idée', 'amélioration', 'amelioration', 'feedback'], response: `Nous sommes ouverts aux suggestions ! Envoyez-nous vos idées via la <a href="contact.html" style="color:#3282DE;text-decoration:underline">page contact</a>.` },
     { tags: ['mise jour', 'mise à jour', 'version', 'changelog', 'nouveautes', 'nouveautés'], response: `Nous améliorons régulièrement le produit. Consultez le <a href="changelog.html" style="color:#3282DE;text-decoration:underline">Changelog</a> pour les nouveautés.` },
-    { tags: ['ios', 'apple', 'safari iphone'], response: `Oui, BTPForms fonctionne sur iPhone via Safari ou tout autre navigateur iOS.` },
-    { tags: ['partout', 'deplacement', 'déplacement', 'nomade', 'itinerant', 'itinérant'], response: `Oui, tant que vous avez accès à Internet, vous pouvez utiliser BTPForms depuis n'importe où.` },
-    { tags: ['ordinateur', 'pc', 'mac', 'bureau', 'desktop', 'laptop'], response: `Oui, BTPForms fonctionne aussi bien sur ordinateur que sur mobile ou tablette.` },
-    { tags: ['navigateur', 'chrome', 'firefox', 'edge', 'navigateurs'], response: `BTPForms est compatible avec tous les navigateurs modernes : Chrome, Firefox, Edge, Safari.` },
+    { tags: ['ios', 'apple', 'safari iphone'], response: `Oui, WebForms fonctionne sur iPhone via Safari ou tout autre navigateur iOS.` },
+    { tags: ['partout', 'deplacement', 'déplacement', 'nomade', 'itinerant', 'itinérant'], response: `Oui, tant que vous avez accès à Internet, vous pouvez utiliser WebForms depuis n'importe où.` },
+    { tags: ['ordinateur', 'pc', 'mac', 'bureau', 'desktop', 'laptop'], response: `Oui, WebForms fonctionne aussi bien sur ordinateur que sur mobile ou tablette.` },
+    { tags: ['navigateur', 'chrome', 'firefox', 'edge', 'navigateurs'], response: `WebForms est compatible avec tous les navigateurs modernes : Chrome, Firefox, Edge, Safari.` },
     { tags: ['internet', 'connexion internet', 'wifi', '4g', '5g'], response: `Une connexion internet est nécessaire pour soumettre les formulaires. Une connexion mobile 4G/5G suffit.` },
-    { tags: ['pv reception', 'réception travaux', 'reception travaux'], response: `Oui, BTPForms est parfaitement adapté aux PV de réception. Uploadez votre modèle et publiez en quelques clics.` },
-    { tags: ['rapport intervention', 'fiche intervention'], response: `Les rapports d'intervention font partie des usages les plus courants sur BTPForms.` },
-    { tags: ['feuille presence', 'pointage', 'heures travail', 'présence terrain'], response: `Oui, BTPForms permet de dématérialiser vos feuilles de présence et de pointage.` },
-    { tags: ['permis feu', 'epi', 'securite chantier', 'sécurité chantier', 'inspection securite'], response: `Oui, BTPForms est utilisé pour fiches sécurité, permis de feu, inspections EPI et documents de conformité.` },
-    { tags: ['bon livraison', 'livraison', 'transport', 'reception marchandise'], response: `Oui, les bons de livraison sont l'un des formulaires les plus utilisés sur BTPForms.` },
-    { tags: ['controle qualite', 'contrôle qualité', 'qualité', 'inspection qualite'], response: `Oui, BTPForms est adapté aux formulaires de contrôle qualité et d'inspection chantier.` },
+    { tags: ['pv reception', 'réception travaux', 'reception travaux'], response: `Oui, WebForms est parfaitement adapté aux PV de réception. Uploadez votre modèle et publiez en quelques clics.` },
+    { tags: ['rapport intervention', 'fiche intervention'], response: `Les rapports d'intervention font partie des usages les plus courants sur WebForms.` },
+    { tags: ['feuille presence', 'pointage', 'heures travail', 'présence terrain'], response: `Oui, WebForms permet de dématérialiser vos feuilles de présence et de pointage.` },
+    { tags: ['permis feu', 'epi', 'securite projet', 'sécurité projet', 'inspection securite'], response: `Oui, WebForms est utilisé pour fiches sécurité, permis de feu, inspections EPI et documents de conformité.` },
+    { tags: ['bon livraison', 'livraison', 'transport', 'reception marchandise'], response: `Oui, les bons de livraison sont l'un des formulaires les plus utilisés sur WebForms.` },
+    { tags: ['controle qualite', 'contrôle qualité', 'qualité', 'inspection qualite'], response: `Oui, WebForms est adapté aux formulaires de contrôle qualité et d'inspection projet.` },
     { tags: ['cerfa', 'officiel', 'document officiel', 'administratif'], response: `Vous pouvez importer n'importe quel PDF, y compris des documents officiels ou CERFA, et y ajouter des champs numériques.` },
     /* ── QUESTIONS HUGO ── */
     { tags: ['hugo beau', 'est beau', 'hugo est beau'], response: `D'après certaines sources totalement objectives… oui.` },
@@ -219,30 +219,30 @@
     { tags: ['hugo personnage principal', 'personnage principal hugo', 'hugo protagoniste'], response: `Dans certaines histoires… oui.` },
 
   /* ── BLOC Q&R ÉTENDU — PRÉSENTATION & IDENTITÉ ── */
-  { tags: ['btpforms quoi','c est quoi btpforms','btpforms kesako','presentation btpforms','qu est ce que btpforms','btpforms presentation','btpforms definition','btpforms outil','btpforms plateforme','btpforms solution'], response: `BTPForms est une application qui permet aux entreprises du BTP de créer des formulaires numériques pour le terrain : rapports de chantier, checklists sécurité, fiches d'intervention, contrôles qualité, etc.` },
-  { tags: ['sert a quoi btpforms','utilite btpforms','utilité btpforms','a quoi sert','pourquoi btpforms','interet btpforms','avantage btpforms','besoin btpforms'], response: `BTPForms sert à remplacer les formulaires papier sur les chantiers par des formulaires numériques remplis sur smartphone ou tablette.` },
-  { tags: ['pour qui btpforms','qui utilise btpforms','cible btpforms','profil utilisateur btpforms','entreprise btpforms','artisan btpforms','conducteur travaux btpforms','chef chantier btpforms'], response: `BTPForms est conçu pour les entreprises du BTP : artisans, PME, conducteurs de travaux, chefs de chantier et équipes terrain.` },
-  { tags: ['btpforms btp','pour btp','secteur btp','btp application','batiment travaux publics','construction formulaire'], response: `Oui, BTPForms est spécialement conçu pour les entreprises du bâtiment et des travaux publics.` },
-  { tags: ['btpforms chantier','application chantier','outil chantier numerique','solution chantier','app terrain','appli terrain'], response: `Oui, BTPForms est une application utilisée directement sur chantier pour remplir des formulaires et des rapports.` },
-  { tags: ['btpforms entreprise','digitalisation btp','numerique btp','transformation numerique btp','digital terrain'], response: `BTPForms aide les entreprises du BTP à digitaliser leurs processus terrain.` },
-  { tags: ['logiciel chantier','outil chantier','logiciel btp','outil btp','logiciel terrain','outil terrain','software btp'], response: `BTPForms est un outil numérique qui simplifie la gestion des formulaires et rapports sur chantier.` },
-  { tags: ['remplacer papier','supprimer papier','fin papier','papier numerique','dematérialiser papier','dematerialiser papier','zero papier chantier'], response: `BTPForms permet de remplacer les documents papier par des formulaires numériques remplis directement sur téléphone.` },
-  { tags: ['gestion formulaires','gérer formulaires','administrer formulaires','organiser formulaires','formulaires chantier gestion'], response: `BTPForms permet de créer, remplir et gérer des formulaires chantier en quelques minutes.` },
+  { tags: ['btpforms quoi','c est quoi btpforms','btpforms kesako','presentation btpforms','qu est ce que btpforms','btpforms presentation','btpforms definition','btpforms outil','btpforms plateforme','btpforms solution'], response: `WebForms est une application qui permet aux entreprises des équipes terrain de créer des formulaires numériques pour le terrain : rapports de terrain, checklists sécurité, fiches d'intervention, contrôles qualité, etc.` },
+  { tags: ['sert a quoi btpforms','utilite btpforms','utilité btpforms','a quoi sert','pourquoi btpforms','interet btpforms','avantage btpforms','besoin btpforms'], response: `WebForms sert à remplacer les formulaires papier sur les sites par des formulaires numériques remplis sur smartphone ou tablette.` },
+  { tags: ['pour qui btpforms','qui utilise btpforms','cible btpforms','profil utilisateur btpforms','entreprise btpforms','artisan btpforms','conducteur travaux btpforms','chef projet btpforms'], response: `WebForms est conçu pour les entreprises des équipes terrain : artisans, PME, conducteurs de travaux, chefs de terrain et équipes terrain.` },
+  { tags: ['btpforms btp','pour btp','secteur btp','btp application','batiment travaux publics','construction formulaire'], response: `Oui, WebForms est spécialement conçu pour les entreprises du bâtiment et des travaux publics.` },
+  { tags: ['btpforms projet','application projet','outil projet numerique','solution projet','app terrain','appli terrain'], response: `Oui, WebForms est une application utilisée directement sur le terrain pour remplir des formulaires et des rapports.` },
+  { tags: ['btpforms entreprise','digitalisation btp','numerique btp','transformation numerique btp','digital terrain'], response: `WebForms aide les entreprises des équipes terrain à digitaliser leurs processus terrain.` },
+  { tags: ['logiciel projet','outil projet','logiciel btp','outil btp','logiciel terrain','outil terrain','software btp'], response: `WebForms est un outil numérique qui simplifie la gestion des formulaires et rapports sur le terrain.` },
+  { tags: ['remplacer papier','supprimer papier','fin papier','papier numerique','dematérialiser papier','dematerialiser papier','zero papier projet'], response: `WebForms permet de remplacer les documents papier par des formulaires numériques remplis directement sur téléphone.` },
+  { tags: ['gestion formulaires','gérer formulaires','administrer formulaires','organiser formulaires','formulaires projet gestion'], response: `WebForms permet de créer, remplir et gérer des formulaires projet en quelques minutes.` },
 
   /* ── TYPES DE FORMULAIRES ── */
-  { tags: ['formulaire chantier','rapport chantier','compte rendu chantier','rapport terrain','fiche chantier','document chantier'], response: `Avec BTPForms vous pouvez créer des rapports de chantier numériques remplis directement par les équipes terrain.` },
-  { tags: ['checklist chantier','liste controle','check list','liste verification','inspection checklist','audit list'], response: `BTPForms permet de créer des checklists de sécurité, de contrôle ou de vérification sur chantier.` },
+  { tags: ['formulaire projet','rapport projet','compte rende terrain','rapport terrain','fiche projet','document projet'], response: `Avec WebForms vous pouvez créer des rapports de terrain numériques remplis directement par les équipes terrain.` },
+  { tags: ['checklist projet','liste controle','check list','liste verification','inspection checklist','audit list'], response: `WebForms permet de créer des checklists de sécurité, de contrôle ou de vérification sur le terrain.` },
   { tags: ['rapport intervention','cr intervention','compte rendu intervention','fiche cr intervention'], response: `Les équipes peuvent remplir un rapport d'intervention directement depuis leur téléphone.` },
-  { tags: ['fiche intervention','fiche mission','fiche travaux','intervention terrain'], response: `BTPForms permet de générer des fiches d'intervention complètes avec photos et signatures.` },
-  { tags: ['rapport quotidien','rapport journalier','daily report','rapport du jour','bilan journalier chantier'], response: `Vous pouvez créer des rapports journaliers de chantier avec BTPForms.` },
-  { tags: ['formulaire securite','formulaire hse','hse chantier','securite travail formulaire','document securite'], response: `BTPForms permet de créer des formulaires sécurité et contrôle HSE.` },
-  { tags: ['audit chantier','inspection chantier','visite chantier','audit terrain','inspection site'], response: `BTPForms peut être utilisé pour réaliser des audits et inspections de chantier.` },
-  { tags: ['controle qualite','contrôle qualité','qualite formulaire','fiche qualite','inspection qualite','autocontrole'], response: `Vous pouvez créer des formulaires de contrôle qualité pour vos chantiers.` },
+  { tags: ['fiche intervention','fiche mission','fiche travaux','intervention terrain'], response: `WebForms permet de générer des fiches d'intervention complètes avec photos et signatures.` },
+  { tags: ['rapport quotidien','rapport journalier','daily report','rapport du jour','bilan journalier projet'], response: `Vous pouvez créer des rapports journaliers de terrain avec WebForms.` },
+  { tags: ['formulaire securite','formulaire hse','hse projet','securite travail formulaire','document securite'], response: `WebForms permet de créer des formulaires sécurité et contrôle HSE.` },
+  { tags: ['audit projet','inspection projet','visite projet','audit terrain','inspection site'], response: `WebForms peut être utilisé pour réaliser des audits et inspections de terrain.` },
+  { tags: ['controle qualite','contrôle qualité','qualite formulaire','fiche qualite','inspection qualite','autocontrole'], response: `Vous pouvez créer des formulaires de contrôle qualité pour vos sites.` },
 
   /* ── FONCTIONNALITÉS SPÉCIFIQUES ── */
-  { tags: ['photos formulaire','ajouter photo','photo chantier','photo terrain','image formulaire','prendre photo'], response: `Les formulaires BTPForms permettent d'ajouter des photos directement depuis le téléphone.` },
+  { tags: ['photos formulaire','ajouter photo','photo projet','photo terrain','image formulaire','prendre photo'], response: `Les formulaires WebForms permettent d'ajouter des photos directement depuis le téléphone.` },
   { tags: ['signature formulaire','signer document','signature numerique','signer electroniquement','esignature','e signature'], response: `Vous pouvez ajouter une signature directement dans un formulaire.` },
-  { tags: ['gps chantier','geolocalisation','localisation formulaire','position gps','coords gps'], response: `BTPForms peut enregistrer la position GPS lors du remplissage d'un formulaire.` },
+  { tags: ['gps projet','geolocalisation','localisation formulaire','position gps','coords gps'], response: `WebForms peut enregistrer la position GPS lors du remplissage d'un formulaire.` },
   { tags: ['horodatage','horodater','timestamp','date heure automatique','heure remplissage'], response: `Chaque formulaire peut être horodaté automatiquement.` },
   { tags: ['export pdf','formulaire pdf','generer pdf','pdf automatique','telecharger pdf','pdf soumission'], response: `Les formulaires remplis peuvent être exportés en PDF.` },
   { tags: ['creer formulaire','creation formulaire','faire formulaire','nouveau formulaire','construire formulaire','builder formulaire'], response: `Vous pouvez créer des formulaires personnalisés très facilement.` },
@@ -251,16 +251,16 @@
   { tags: ['historique formulaires','archive formulaires','anciens formulaires','voir formulaires passes','retrouver formulaires'], response: `Tous les formulaires remplis sont enregistrés dans l'historique.` },
 
   /* ── COMPATIBILITÉ MOBILE / APPAREILS ── */
-  { tags: ['application mobile','appli mobile','app mobile','mobile btpforms','version mobile'], response: `BTPForms fonctionne parfaitement sur smartphone et tablette.` },
-  { tags: ['telephone chantier','utiliser telephone','remplir telephone','mobile chantier','smartphone chantier'], response: `Les équipes peuvent utiliser BTPForms directement sur leur téléphone.` },
-  { tags: ['android iphone','android ou iphone','ios android','compatible android','compatible iphone','apple android'], response: `BTPForms fonctionne sur Android et iPhone.` },
-  { tags: ['tablette chantier','ipad chantier','tablette formulaire','remplir tablette'], response: `Les tablettes peuvent être utilisées pour remplir les formulaires.` },
+  { tags: ['application mobile','appli mobile','app mobile','mobile btpforms','version mobile'], response: `WebForms fonctionne parfaitement sur smartphone et tablette.` },
+  { tags: ['telephone projet','utiliser telephone','remplir telephone','mobile site','smartphone projet'], response: `Les équipes peuvent utiliser WebForms directement sur leur téléphone.` },
+  { tags: ['android iphone','android ou iphone','ios android','compatible android','compatible iphone','apple android'], response: `WebForms fonctionne sur Android et iPhone.` },
+  { tags: ['tablette projet','ipad projet','tablette formulaire','remplir tablette'], response: `Les tablettes peuvent être utilisées pour remplir les formulaires.` },
   { tags: ['connexion requise','besoin connexion','internet obligatoire','sans connexion formulaire'], response: `Même sans connexion internet, les formulaires peuvent être remplis.` },
 
   /* ── TARIFS & ABONNEMENTS ── */
-  { tags: ['tarif btpforms','prix btpforms','cout btpforms','combien coute btpforms','tarification btpforms','grille tarifaire'], response: `Les tarifs BTPForms commencent à 19€/mois (Starter), 49€/mois (Avancé) ou 99€/mois (Entreprise). 7 jours d'essai gratuit sans CB.` },
+  { tags: ['tarif btpforms','prix btpforms','cout btpforms','combien coute btpforms','tarification btpforms','grille tarifaire'], response: `Les tarifs WebForms commencent à 19€/mois (Starter), 49€/mois (Avancé) ou 99€/mois (Entreprise). 7 jours d'essai gratuit sans CB.` },
   { tags: ['essai gratuit btpforms','tester gratuitement','period essai','free trial','tester btpforms','accès gratuit'], response: `Oui, un essai gratuit de 7 jours est disponible pour tester l'application, sans carte bancaire.` },
-  { tags: ['abonnement btpforms','souscrire btpforms','payer btpforms','facturation btpforms','souscription'], response: `BTPForms fonctionne avec un abonnement mensuel ou annuel (−20%) adapté à la taille de votre entreprise.` },
+  { tags: ['abonnement btpforms','souscrire btpforms','payer btpforms','facturation btpforms','souscription'], response: `WebForms fonctionne avec un abonnement mensuel ou annuel (−20%) adapté à la taille de votre entreprise.` },
   { tags: ['nombre utilisateurs','combien utilisateurs','limite membres','ajouter equipe','utilisateurs illimites'], response: `Vous pouvez ajouter plusieurs utilisateurs. Le plan Avancé et Entreprise offrent des créateurs illimités.` },
 
   /* ── SUPPORT & CONTACT ── */
@@ -269,38 +269,38 @@
   { tags: ['probleme application','bug app','erreur app','app ne fonctionne pas','site probleme','probleme site'], response: `Si vous avez un problème, contactez le support via la page contact. Nous répondons sous 24h.` },
 
   /* ── SALUTATIONS & SOCIAL ── */
-  { tags: ['ça va bien','ca va bien','vous allez bien','vous allez comment','comment tu vas'], response: `Oui merci 🙂 Comment puis-je vous aider concernant BTPForms ?` },
-  { tags: ['quoi de neuf','news btpforms','actualite btpforms','quoi de nouveau','quoi ca'], response: `Je suis là pour vous aider à découvrir BTPForms. Que voulez-vous savoir ?` },
+  { tags: ['ça va bien','ca va bien','vous allez bien','vous allez comment','comment tu vas'], response: `Oui merci 🙂 Comment puis-je vous aider concernant WebForms ?` },
+  { tags: ['quoi de neuf','news btpforms','actualite btpforms','quoi de nouveau','quoi ca'], response: `Je suis là pour vous aider à découvrir WebForms. Que voulez-vous savoir ?` },
   { tags: ['bonsoir','bonjour equipe','salutation','bjr','bsr'], response: `Bonjour 👋 Comment puis-je vous aider aujourd'hui ?` },
-  { tags: ['yo','wesh','cc','coucou','hi btpforms'], response: `Salut ! Vous voulez en savoir plus sur BTPForms ?` },
+  { tags: ['yo','wesh','cc','coucou','hi btpforms'], response: `Salut ! Vous voulez en savoir plus sur WebForms ?` },
   { tags: ['hey','good morning','good day','hiya'], response: `Hello ! Comment puis-je vous aider ?` },
   { tags: ['merci beaucoup','merci bien','thanks','thank you','grand merci'], response: `Avec plaisir 🙂` },
   { tags: ['bonne journee','bonne soiree','à bientot','a bientot','bonne continuation'], response: `Bonne journée à vous aussi !` },
-  { tags: ['tu es qui toi','qui es-tu','presentation toi','qui tu es','c est qui le bot'], response: `Je suis l'assistant du site BTPForms.` },
-  { tags: ['tu es robot','etes vous robot','es tu un bot','chatbot btpforms','bot ou humain'], response: `Oui, je suis un assistant virtuel pour répondre aux questions sur BTPForms.` },
+  { tags: ['tu es qui toi','qui es-tu','presentation toi','qui tu es','c est qui le bot'], response: `Je suis l'assistant du site WebForms.` },
+  { tags: ['tu es robot','etes vous robot','es tu un bot','chatbot btpforms','bot ou humain'], response: `Oui, je suis un assistant virtuel pour répondre aux questions sur WebForms.` },
   { tags: ['tu es ia','es tu ia','ai chatbot','intelligence artificielle chatbot','bot ia'], response: `Je suis un chatbot conçu pour aider les visiteurs du site.` },
 
   /* ── QUESTIONS FUN ── */
-  { tags: ['tu es beau','beau chatbot','sympa le bot','joli assistant'], response: `Merci 😄 Mais je suis surtout là pour vous aider avec BTPForms.` },
+  { tags: ['tu es beau','beau chatbot','sympa le bot','joli assistant'], response: `Merci 😄 Mais je suis surtout là pour vous aider avec WebForms.` },
   { tags: ['tu es intelligent','bot intelligent','chatbot malin','super bot'], response: `J'essaie surtout d'être utile !` },
   { tags: ['tu es humain','es tu humain','vrai humain','personne reelle'], response: `Non, je suis un assistant virtuel.` },
   { tags: ['tu dors','bot dort','il dort','pas dispo'], response: `Non, je suis disponible 24h/24.` },
   { tags: ['tu es vivant','bot vivant','ia consciente','tu penses'], response: `Je suis un programme conçu pour aider les visiteurs du site.` },
 
   /* ── SYNONYMES SUPPLÉMENTAIRES POUR GONFLER LA COUVERTURE ── */
-  { tags: ['digitaliser chantier','numeriser chantier','dématérialisation chantier','dematerialisation chantier','sans papier'], response: `BTPForms vous aide à digitaliser vos processus terrain et à supprimer le papier sur vos chantiers.` },
+  { tags: ['digitaliser projet','numeriser projet','dématérialisation projet','dematerialisation projet','sans papier'], response: `WebForms vous aide à digitaliser vos processus terrain et à supprimer le papier sur le terrain.` },
   { tags: ['temps reel','notification temps reel','recu instantanement','pdf instantane','soumission instantanee'], response: `Oui, chaque soumission génère un PDF en temps réel, accessible immédiatement dans votre tableau de bord.` },
   { tags: ['tableau de bord','dashboard','espace admin','interface admin','back office'], response: `Votre tableau de bord centralise tous vos formulaires, soumissions et statistiques en un seul endroit.` },
-  { tags: ['qr code imprimer','imprimer qr','plastifier qr','coller qr','afficher qr','qr code chantier'], response: `Chaque formulaire génère un QR code téléchargeable. Imprimez-le, plastifiez-le et collez-le sur site.` },
-  { tags: ['pas besoin compte terrain','compte ouvriers','ouvriers sans compte','equipe sans inscription'], response: `Vos équipes terrain n'ont pas besoin de compte BTPForms. Un lien ou QR code suffit.` },
+  { tags: ['qr code imprimer','imprimer qr','plastifier qr','coller qr','afficher qr','qr code terrain'], response: `Chaque formulaire génère un QR code téléchargeable. Imprimez-le, plastifiez-le et collez-le sur site.` },
+  { tags: ['pas besoin compte terrain','compte ouvriers','ouvriers sans compte','equipe sans inscription'], response: `Vos équipes terrain n'ont pas besoin de compte WebForms. Un lien ou QR code suffit.` },
   { tags: ['soumissions illimitees','soumissions illimitées','formulaires illimites','illimité soumissions'], response: `Le plan Entreprise propose des soumissions illimitées chaque mois.` },
-  { tags: ['workspace multiple','plusieurs espaces','multi workspace','espace de travail multiple'], response: `Vous pouvez créer plusieurs espaces de travail pour séparer vos projets, chantiers ou activités.` },
-  { tags: ['integration logiciel','connecter logiciel','api logiciel','webhook btpforms','synchronisation'], response: `Les App connexions permettent de synchroniser BTPForms avec vos outils existants via API ou webhook.` },
+  { tags: ['workspace multiple','plusieurs espaces','multi workspace','espace de travail multiple'], response: `Vous pouvez créer plusieurs espaces de travail pour séparer vos projets, projets ou activités.` },
+  { tags: ['integration logiciel','connecter logiciel','api logiciel','webhook btpforms','synchronisation'], response: `Les App connexions permettent de synchroniser WebForms avec vos outils existants via API ou webhook.` },
   { tags: ['cerfa btpforms','formulaire officiel','document reglementaire','conformite doc'], response: `Importez n'importe quel PDF officiel ou CERFA et ajoutez-y des champs numériques interactifs.` },
   { tags: ['prise en main rapide','onboarding rapide','demarrer vite','operationnel rapidement','15 minutes'], response: `La prise en main prend moins de 15 minutes. Upload votre PDF, posez vos champs, publiez — c'est tout.` },
-  { tags: ['artisan btpforms','artisan numerique','artisan tablette','petit chantier btpforms'], response: `BTPForms est idéal pour les artisans qui veulent un outil simple, rapide et sans infrastructure complexe.` },
-  { tags: ['grand chantier','gros chantier','chantier important','grand projet btp'], response: `BTPForms s'adapte aussi bien aux petits chantiers qu'aux grands projets multi-équipes.` },
-  { tags: ['sous traitant','sous-traitant','prestataire chantier','co-traitant'], response: `Vos sous-traitants peuvent remplir vos formulaires via lien ou QR code, sans créer de compte.` },
+  { tags: ['artisan btpforms','artisan numerique','artisan tablette','petit projet btpforms'], response: `WebForms est idéal pour les artisans qui veulent un outil simple, rapide et sans infrastructure complexe.` },
+  { tags: ['grand projet','gros projet','projet important','grand projet btp'], response: `WebForms s'adapte aussi bien aux petits projets qu'aux grands projets multi-équipes.` },
+  { tags: ['sous traitant','sous-traitant','prestataire projet','co-traitant'], response: `Vos sous-traitants peuvent remplir vos formulaires via lien ou QR code, sans créer de compte.` },
   { tags: ['mot de passe formulaire','formulaire prive','acces restreint','formulaire protege'], response: `Vous pouvez protéger un formulaire par mot de passe pour en restreindre l'accès.` },
   { tags: ['sauvegarder automatiquement','sauvegarde auto','auto save','brouillon formulaire'], response: `Les soumissions sont sauvegardées automatiquement dès leur envoi.` },
   { tags: ['relancer','rappel remplissage','notifier equipe','alerte soumission'], response: `Vous pouvez partager de nouveau le lien ou QR code pour relancer vos équipes.` },
@@ -544,12 +544,12 @@
   const wrap = document.createElement('div');
   wrap.id = 'btpbot-wrap';
   wrap.setAttribute('role', 'dialog');
-  wrap.setAttribute('aria-label', 'Assistant BTPForms');
+  wrap.setAttribute('aria-label', 'Assistant WebForms');
   wrap.innerHTML = `
     <div class="btpbot-head">
       <div class="btpbot-avatar">🤖</div>
       <div class="btpbot-head-info">
-        <div class="btpbot-head-name">Assistant BTPForms</div>
+        <div class="btpbot-head-name">Assistant WebForms</div>
         <div class="btpbot-head-status">
           <div class="btpbot-status-dot"></div>
           En ligne · Répond en quelques secondes
@@ -678,7 +678,7 @@
   async function initChat() {
     if (!firstOpen) return;
     firstOpen = false;
-    await botReply(`Bonjour 👋 Je suis l'assistant BTPForms.<br><br>
+    await botReply(`Bonjour 👋 Je suis l'assistant WebForms.<br><br>
       Je peux vous renseigner sur nos <b>tarifs</b>, nos <b>fonctionnalités</b>, l'<b>essai gratuit</b>… Que souhaitez-vous savoir ?`);
     buildQuickReplies();
   }
