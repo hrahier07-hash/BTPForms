@@ -22,7 +22,7 @@ module.exports = async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'WebForms <hello@webforms.com>',
+        from: 'WebForms <hello@webforms.fr>',
         to: ['hugo@astrova.fr', 'thibaud@astrova.fr'],
         subject: `📞 Demande de rappel — ${prenom} ${nom}`,
         html: `
@@ -68,7 +68,7 @@ module.exports = async function handler(req, res) {
               </div>
             </div>
             <p style="text-align: center; font-size: 11.5px; color: #9ca3af; margin-top: 20px;">
-              Envoyé depuis le formulaire webforms.com
+              Envoyé depuis le formulaire webforms.fr
             </p>
           </div>
         `,
