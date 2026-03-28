@@ -532,7 +532,7 @@ p.ss{font-size:17px;color:var(--muted);line-height:1.72;max-width:500px;font-wei
 /* ── CTA ── */
 .ctad{background:var(--dark);position:relative;overflow:hidden}
 .ctabl{position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:680px;height:420px;background:radial-gradient(ellipse,rgba(50,130,222,.2) 0%,transparent 68%);pointer-events:none}
-.ctain{position:relative;z-index:1;text-align:center;padding:100px 36px}
+.ctain{position:relative;z-index:1;text-align:center;padding:100px 0}
 .ctain h2{font-size:clamp(32px,5vw,58px);font-weight:800;color:#fff;margin-bottom:16px}
 .ctain p{font-size:18px;color:rgba(255,255,255,.4);margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;font-weight:300;line-height:1.68}
 .ctaacts{display:flex;justify-content:center;gap:12px;margin-bottom:13px}
@@ -594,7 +594,6 @@ footer{background:var(--bgl);border-top:1px solid var(--border);padding:60px 0 3
 @media(max-width:640px){
   .w{padding:0 16px}
   .wn{padding:0 16px}
-  section{padding:72px 0}
   .hstats{gap:20px 32px;margin-bottom:28px}
   .ptog-btn{font-size:12.5px;padding:7px 14px}
   .ptog-badge{display:block;margin:2px auto 0;text-align:center}
@@ -611,7 +610,7 @@ footer{background:var(--bgl);border-top:1px solid var(--border);padding:60px 0 3
   .ptog-wrap{width:100%;justify-content:center}
   .ptog-btn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 12px}
   .pgrid{gap:14px}
-  .ctain{padding:72px 20px}
+  .ctain{padding:72px 0}
   .ctaacts{flex-direction:column;align-items:center}
 }
 
@@ -766,7 +765,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   .ptog-btn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 12px}
   .pgrid{gap:14px}
   /* cta */
-  .ctain{padding:56px 16px}
+  .ctain{padding:56px 0}
   .ctaacts{flex-direction:column;align-items:center}
   /* footer */
   .ftg{grid-template-columns:1fr;gap:28px}
@@ -830,9 +829,9 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
 
 
 /* ── TESTIMONIALS CAROUSEL ── */
-.tcarousel-wrap{user-select:none;overflow:hidden;position:relative;padding:0 4px}
+.tcarousel-wrap{user-select:none;overflow:hidden;position:relative;padding:0}
 .tcarousel-track{display:flex;transition:transform .7s cubic-bezier(.22,1,.36,1);will-change:transform}
-.tcarousel-page{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;min-width:100%;flex-shrink:0;box-sizing:border-box;padding:4px 0 8px}
+.tcarousel-page{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;min-width:100%;flex-shrink:0;box-sizing:border-box;padding:0 0 8px}
 .tcarousel-wrap .tcard{gap:12px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
 .tcarousel-wrap .tcard:hover{box-shadow:0 6px 24px rgba(0,0,0,.08)}
 .tcarousel-wrap .tav{width:40px;height:40px;min-width:40px;font-size:13px;color:#fff;border:none}
@@ -848,11 +847,14 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
 @media(max-width:960px){.tcarousel-page{grid-template-columns:1fr 1fr}.tc-btn{display:none}}
 @media(max-width:580px){.tcarousel-page{grid-template-columns:1fr}.tc-btn{display:none}.tcarousel-wrap .tcard{padding:22px 18px}}
 
-/* FIX margins section soumissions */
+/* Sections pleine largeur : fonds / bordures sur toute la fenêtre ; gouttière uniquement via .w / .wn */
 .section-soumissions{
-  max-width:1120px;
-  margin:0 auto;
-  padding:0 36px;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding-left:0;
+  padding-right:0;
+  box-sizing:border-box;
 }
 
 </style>
@@ -1269,7 +1271,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
   </div>
 
   <!-- Carousel container -->
-  <div class="tcarousel-wrap" style="position:relative;overflow:hidden;margin-top:48px">
+  <div class="tcarousel-wrap" style="position:relative;overflow:hidden;margin-top:52px">
     <div class="tcarousel-track" id="tcTrack">
 
       <!-- Row 1 of 4 -->
@@ -1387,6 +1389,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
 <!-- ══ CTA FINAL ══ -->
 <div class="ctad">
   <div class="ctabl"></div>
+  <div class="w">
   <div class="ctain">
     <h2 class="rv">Prêt à numériser<br>votre terrain ?</h2>
     <p class="rv d1">Des milliers de professionnels l'utilisent déjà. Essayez gratuitement.</p>
@@ -1395,6 +1398,7 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
       <button onclick="openRappel()" class="bh2" style="cursor:pointer">📞 Être rappelé</button>
     </div>
     <p class="ctanote rv d3">7 jours d'essai · Aucune carte requise · Annulable à tout moment</p>
+  </div>
   </div>
 
 </div>
