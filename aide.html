@@ -1056,13 +1056,132 @@ var aideContents = {
   partager: {
     ico: '🔗',
     title: 'Partager vos formulaires',
-    html: `<div class="aide-soon"><div class="aide-soon-ico">🚧</div><h3>Guide en cours de rédaction</h3><p>Ce guide sera disponible très prochainement. En attendant, n'hésitez pas à nous contacter si vous avez besoin d'aide.</p></div>`
+    html: `
+      <div class="aide-steps-list">
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">1</div>
+          <div class="aide-step-content">
+            <h4>Accéder à votre formulaire</h4>
+            <p>Une fois créé, votre formulaire apparaît dans l'espace de travail que vous avez sélectionné. Cliquez dessus pour ouvrir son menu principal.</p>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">2</div>
+          <div class="aide-step-content">
+            <h4>Tableau de bord — statistiques</h4>
+            <p>L'onglet <strong>Principal</strong> affiche les statistiques de votre formulaire en temps réel :</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px">
+              ${[['📊','Remplissage','Volume de formulaires remplis'],['🌿','Économie CO₂','Kg de CO₂ économisés'],['⏱️','Gain de temps','Minutes économisées']].map(([ico,label,sub])=>`
+              <div style="background:var(--bgl);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center">
+                <div style="font-size:22px;margin-bottom:6px">${ico}</div>
+                <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px">${label}</div>
+                <div style="font-size:11.5px;color:var(--muted);line-height:1.4">${sub}</div>
+              </div>`).join('')}
+            </div>
+            <div class="aide-screenshot" style="margin-top:16px">
+              <img src="aide-imgs/partager-1.png" alt="Menu principal d'un formulaire">
+              <div class="aide-screenshot-caption">Vue principale d'un formulaire — statistiques et onglets de navigation.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">3</div>
+          <div class="aide-step-content">
+            <h4>Consulter les réponses</h4>
+            <p>L'onglet <strong>Formulaires soumis</strong> centralise l'ensemble des réponses reçues. Vous pouvez les consulter individuellement et les <strong>télécharger</strong> au format PDF si nécessaire.</p>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">4</div>
+          <div class="aide-step-content">
+            <h4>Partager le lien ou le QR code</h4>
+            <p>Depuis l'onglet <strong>Partager le lien</strong>, deux options sont disponibles :</p>
+            <ul class="aide-blist">
+              <li><strong>Lien de partage</strong> — copiez-le et envoyez-le aux personnes concernées par email, SMS ou messagerie</li>
+              <li><strong>QR code</strong> — généré automatiquement, téléchargeable pour un affichage physique sur chantier ou en point de vente</li>
+            </ul>
+            <div class="aide-info" style="margin-top:14px">
+              <span class="aide-info-ico">💡</span>
+              <p>Le bouton <strong>QR code</strong> est aussi accessible directement en haut à droite de la page du formulaire, pour un accès rapide.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">5</div>
+          <div class="aide-step-content">
+            <h4>Historique et configuration</h4>
+            <p>Les deux derniers onglets vous donnent accès à :</p>
+            <ul class="aide-blist">
+              <li><strong>Historique des versions</strong> — retrouvez toutes les modifications passées et revenez à une version antérieure si besoin</li>
+              <li><strong>Configuration</strong> — paramétrez le comportement du formulaire (accès, notifications, automatisations…)</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    `
   },
 
   modifier: {
     ico: '✏️',
     title: 'Modifier un formulaire après soumission',
-    html: `<div class="aide-soon"><div class="aide-soon-ico">🚧</div><h3>Guide en cours de rédaction</h3><p>Ce guide sera disponible très prochainement. En attendant, n'hésitez pas à nous contacter si vous avez besoin d'aide.</p></div>`
+    html: `
+      <div class="aide-steps-list">
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">1</div>
+          <div class="aide-step-content">
+            <h4>Retrouver un formulaire soumis</h4>
+            <p>Dans le menu à gauche, cliquez sur l'onglet <strong>Formulaires soumis</strong> pour afficher l'ensemble des réponses reçues sur ce formulaire.</p>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">2</div>
+          <div class="aide-step-content">
+            <h4>Ouvrir une soumission</h4>
+            <p>Cliquez sur un formulaire pour accéder à son détail. Trois sections sont disponibles :</p>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+              ${[
+                ['📄','Le PDF','Visualisez l\'ensemble des informations renseignées par l\'utilisateur.'],
+                ['🕐','L\'historique','Suivez les éventuelles modifications apportées au document depuis sa création.'],
+                ['📝','Les notes internes','Accessibles en haut à droite — ajoutez des commentaires ou informations complémentaires visibles uniquement en interne.']
+              ].map(([ico,label,desc])=>`
+              <div style="display:flex;gap:12px;background:var(--bgl);border:1px solid var(--border);border-radius:12px;padding:14px;align-items:flex-start">
+                <div style="width:36px;height:36px;background:#fff;border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">${ico}</div>
+                <div>
+                  <div style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:3px">${label}</div>
+                  <div style="font-size:12.5px;color:var(--muted);line-height:1.55">${desc}</div>
+                </div>
+              </div>`).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">3</div>
+          <div class="aide-step-content">
+            <h4>Corriger et régénérer</h4>
+            <p>Depuis cette même vue, trois actions sont disponibles :</p>
+            <ul class="aide-blist">
+              <li><strong>Télécharger le PDF</strong> — exportez la version actuelle du document</li>
+              <li><strong>Modifier</strong> — corrigez les champs en cas d'erreur ou d'information manquante</li>
+              <li><strong>Régénérer</strong> — produisez une nouvelle version corrigée du document PDF</li>
+            </ul>
+            <div class="aide-info" style="margin-top:16px">
+              <span class="aide-info-ico">💡</span>
+              <p>La modification d'une soumission n'efface pas la version précédente — l'<strong>historique</strong> conserve toutes les versions pour une traçabilité complète.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    `
   }
 
 };
