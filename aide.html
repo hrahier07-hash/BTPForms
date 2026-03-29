@@ -514,10 +514,10 @@ img,video,iframe,svg.hero-img{max-width:100%;height:auto}
     <h2 class="sec-h" style="margin-bottom:8px">Guides par catégorie</h2>
     <p class="sec-p">Trouvez rapidement la réponse à votre question.</p>
     <div class="aide-grid">
-      <a href="#" class="aide-card"><div class="aide-ico">🏢</div><h3>Créer un espace de travail</h3><p>Configurer votre espace, inviter votre équipe et organiser vos formulaires.</p></a>
-      <a href="#" class="aide-card"><div class="aide-ico">📄</div><h3>Créer un formulaire</h3><p>Importer un PDF, poser des champs et publier votre formulaire en quelques minutes.</p></a>
-      <a href="#" class="aide-card"><div class="aide-ico">🔗</div><h3>Partager vos formulaires</h3><p>Envoyer un lien, intégrer sur votre site ou générer un QR code imprimable.</p></a>
-      <a href="#" class="aide-card"><div class="aide-ico">✏️</div><h3>Modifier un formulaire après soumission</h3><p>Corriger ou compléter une soumission existante depuis le tableau de bord.</p></a>
+      <a href="#" class="aide-card" onclick="openAide('workspace');return false;"><div class="aide-ico">🏢</div><h3>Créer un espace de travail</h3><p>Configurer votre espace, inviter votre équipe et organiser vos formulaires.</p></a>
+      <a href="#" class="aide-card" onclick="openAide('formulaire');return false;"><div class="aide-ico">📄</div><h3>Créer un formulaire</h3><p>Importer un PDF, poser des champs et publier votre formulaire en quelques minutes.</p></a>
+      <a href="#" class="aide-card" onclick="openAide('partager');return false;"><div class="aide-ico">🔗</div><h3>Partager vos formulaires</h3><p>Envoyer un lien, intégrer sur votre site ou générer un QR code imprimable.</p></a>
+      <a href="#" class="aide-card" onclick="openAide('modifier');return false;"><div class="aide-ico">✏️</div><h3>Modifier un formulaire après soumission</h3><p>Corriger ou compléter une soumission existante depuis le tableau de bord.</p></a>
     </div>
   </div>
 </section>
@@ -783,6 +783,206 @@ function mmToggle(btn){
 }
 </script>
 <script src="chatbot.js"></script>
+
+<!-- ══════════════ AIDE MODALES ══════════════ -->
+<style>
+#aide-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:98000;
+  background:rgba(6,6,14,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  align-items:flex-start;justify-content:center;padding:40px 20px 40px;overflow-y:auto;
+}
+#aide-modal-overlay.open{display:flex}
+#aide-modal-box{
+  background:#fff;border-radius:24px;width:100%;max-width:720px;
+  box-shadow:0 32px 80px rgba(0,0,0,.22);
+  animation:aideIn .28s cubic-bezier(.22,1,.36,1);
+  position:relative;overflow:hidden;
+  margin:auto;
+}
+@keyframes aideIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.aide-modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 28px 20px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:#fff;z-index:1;border-radius:24px 24px 0 0;
+}
+.aide-modal-title{display:flex;align-items:center;gap:14px}
+.aide-modal-ico{width:44px;height:44px;border-radius:12px;background:#eef5ff;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.aide-modal-header h2{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.02em}
+.aide-modal-close{width:34px;height:34px;border-radius:50%;background:#f3f4f6;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#6B7280;flex-shrink:0;transition:background .15s}
+.aide-modal-close:hover{background:#e5e7eb}
+.aide-modal-body{padding:32px 28px 36px}
+
+/* Step indicator */
+.aide-steps-list{display:flex;flex-direction:column;gap:0;margin-bottom:32px}
+.aide-step-row{display:flex;gap:16px;position:relative}
+.aide-step-row:not(:last-child)::after{content:'';position:absolute;left:19px;top:40px;bottom:0;width:2px;background:var(--border)}
+.aide-step-num{width:38px;height:38px;border-radius:50%;background:var(--P);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(50,130,222,.3);z-index:1;margin-top:1px}
+.aide-step-content{padding-bottom:28px;flex:1}
+.aide-step-content h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3}
+.aide-step-content p{font-size:13.5px;color:var(--muted);line-height:1.7;font-weight:300}
+.aide-step-row:last-child .aide-step-content{padding-bottom:0}
+
+/* Screenshot block */
+.aide-screenshot{background:var(--bgl);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:14px}
+.aide-screenshot img{width:100%;display:block}
+.aide-screenshot-caption{padding:10px 14px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);font-weight:400;background:#fff}
+
+/* Info box */
+.aide-info{background:#eef5ff;border:1px solid rgba(50,130,222,.18);border-radius:12px;padding:14px 16px;margin-top:14px;display:flex;gap:10px;align-items:flex-start}
+.aide-info-ico{font-size:16px;flex-shrink:0;margin-top:1px}
+.aide-info p{font-size:13px;color:#1e4080;line-height:1.62;font-weight:400;margin:0}
+
+/* Bullet list */
+.aide-blist{list-style:none;display:flex;flex-direction:column;gap:9px;margin:12px 0 0}
+.aide-blist li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:#374151;line-height:1.55}
+.aide-blist li::before{content:'';width:20px;height:20px;flex-shrink:0;margin-top:0px;border-radius:50%;background:#eef5ff url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 10l4 4L15.5 7' stroke='%233282DE' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;border:1.5px solid rgba(50,130,222,.22)}
+
+/* Section divider in modal */
+.aide-divider{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+/* Coming soon state */
+.aide-soon{text-align:center;padding:48px 24px}
+.aide-soon-ico{font-size:48px;margin-bottom:16px}
+.aide-soon h3{font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px}
+.aide-soon p{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300}
+
+@media(max-width:640px){
+  #aide-modal-overlay{padding:16px 12px}
+  .aide-modal-body{padding:24px 18px 28px}
+  .aide-modal-header{padding:18px 18px 16px}
+}
+</style>
+
+<div id="aide-modal-overlay">
+  <div id="aide-modal-box">
+    <div class="aide-modal-header">
+      <div class="aide-modal-title">
+        <div class="aide-modal-ico" id="aide-modal-ico">🏢</div>
+        <h2 id="aide-modal-heading">Créer un espace de travail</h2>
+      </div>
+      <button class="aide-modal-close" onclick="closeAide()" aria-label="Fermer">✕</button>
+    </div>
+    <div class="aide-modal-body" id="aide-modal-body">
+      <!-- Content injected by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+var aideContents = {
+
+  workspace: {
+    ico: '🏢',
+    title: 'Créer un espace de travail',
+    html: `
+      <div class="aide-steps-list">
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">1</div>
+          <div class="aide-step-content">
+            <h4>Ouvrir l'application et accéder à la création</h4>
+            <p>Dans le menu latéral droit de l'application, repérez la section <strong>Espaces de travail</strong>, puis cliquez sur le bouton <strong>+ Nouvel espace</strong>.</p>
+            <div class="aide-screenshot" style="max-width:280px;margin-top:14px">
+              <img src="aide-imgs/workspace-1.png" alt="Bouton Nouvel espace" style="width:100%;display:block">
+            </div>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">2</div>
+          <div class="aide-step-content">
+            <h4>Nommer et configurer votre espace</h4>
+            <p>Une fenêtre s'ouvre. Vous pouvez :</p>
+            <ul class="aide-blist">
+              <li>Donner un nom à votre espace de travail</li>
+              <li>Sélectionner les membres de votre société à y ajouter</li>
+            </ul>
+            <div class="aide-info" style="margin-top:16px">
+              <span class="aide-info-ico">💡</span>
+              <p>Si aucun utilisateur n'est encore disponible, vous pourrez envoyer des invitations par e-mail directement depuis l'espace une fois créé.</p>
+            </div>
+            <div class="aide-screenshot" style="margin-top:16px">
+              <img src="aide-imgs/workspace-2.png" alt="Fenêtre de création d'espace de travail">
+              <div class="aide-screenshot-caption">Fenêtre de création — nommez l'espace et choisissez les membres.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">3</div>
+          <div class="aide-step-content">
+            <h4>Valider la création</h4>
+            <p>Cliquez sur <strong>Créer</strong>. Votre nouvel espace apparaît immédiatement dans la liste, sous le bouton <strong>+ Nouvel espace</strong>, avec le nom que vous lui avez attribué. Cliquez dessus pour y accéder.</p>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">4</div>
+          <div class="aide-step-content">
+            <h4>Depuis votre espace — prochaines étapes</h4>
+            <p>Une fois dans l'espace, deux actions sont disponibles en haut à droite :</p>
+            <ul class="aide-blist">
+              <li><strong>Icône « Ajouter un utilisateur »</strong> — pour inviter des collaborateurs par e-mail</li>
+              <li><strong>Créer un formulaire</strong> — pour publier votre premier formulaire rattaché à cet espace</li>
+            </ul>
+            <div class="aide-screenshot" style="margin-top:16px">
+              <img src="aide-imgs/workspace-3.png" alt="Créer votre premier formulaire">
+              <div class="aide-screenshot-caption">L'espace vide vous propose de créer votre premier formulaire.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    `
+  },
+
+  formulaire: {
+    ico: '📄',
+    title: 'Créer un formulaire',
+    html: `<div class="aide-soon"><div class="aide-soon-ico">🚧</div><h3>Guide en cours de rédaction</h3><p>Ce guide sera disponible très prochainement. En attendant, n'hésitez pas à nous contacter si vous avez besoin d'aide.</p></div>`
+  },
+
+  partager: {
+    ico: '🔗',
+    title: 'Partager vos formulaires',
+    html: `<div class="aide-soon"><div class="aide-soon-ico">🚧</div><h3>Guide en cours de rédaction</h3><p>Ce guide sera disponible très prochainement. En attendant, n'hésitez pas à nous contacter si vous avez besoin d'aide.</p></div>`
+  },
+
+  modifier: {
+    ico: '✏️',
+    title: 'Modifier un formulaire après soumission',
+    html: `<div class="aide-soon"><div class="aide-soon-ico">🚧</div><h3>Guide en cours de rédaction</h3><p>Ce guide sera disponible très prochainement. En attendant, n'hésitez pas à nous contacter si vous avez besoin d'aide.</p></div>`
+  }
+
+};
+
+function openAide(key){
+  var c=aideContents[key];
+  if(!c)return;
+  document.getElementById('aide-modal-ico').textContent=c.ico;
+  document.getElementById('aide-modal-heading').textContent=c.title;
+  document.getElementById('aide-modal-body').innerHTML=c.html;
+  var overlay=document.getElementById('aide-modal-overlay');
+  overlay.classList.add('open');
+  overlay.scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+
+function closeAide(){
+  document.getElementById('aide-modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  var overlay=document.getElementById('aide-modal-overlay');
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay)closeAide();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape')closeAide();
+  });
+});
+</script>
 <script>
 window.axeptioSettings = {
   clientId: "69bbd90ba32ccd25e9defde2",
