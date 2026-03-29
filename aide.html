@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centre d'aide — WebForms</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--P:#3282DE;--PD:#2268C0;--PL:#5BA3E8;--dark:#06060E;--text:#111827;--muted:#6B7280;--border:#E4E4E7;--bg:#fff;--bgl:#F7F7FA;--r:8px;--rl:14px;--rxl:20px}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5{font-family:'IBM Plex Sans',sans-serif;line-height:1.1;letter-spacing:-0.02em}
+a{text-decoration:none;color:inherit}
+.w{max-width:1120px;margin:0 auto;padding:0 36px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:9000;transition:border-color .3s,box-shadow .3s,background .3s;border-bottom:1px solid var(--border);background:rgba(255,255,255,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 8px rgba(0,0,0,.06)}
+nav.sc{border-color:var(--border);box-shadow:0 1px 16px rgba(0,0,0,.09);background:rgba(255,255,255,.99)}
+
+/* Always light — hero is white */
+nav .nl{color:#374151;font-size:14px;font-weight:400;transition:color .15s,background .15s}
+nav .nl:hover{background:var(--bgl);color:var(--text)}
+nav .bg{color:var(--text);font-size:14px;font-weight:400;padding:7px 16px;border-radius:var(--r);transition:background .15s,color .15s}
+nav .bg:hover{background:var(--bgl)}
+nav .bp{background:var(--P);color:#fff;font-size:14px;font-weight:600;padding:8px 20px;border-radius:var(--r);transition:background .15s,box-shadow .15s;border:none}
+nav .bp:hover{background:var(--PD);box-shadow:0 4px 16px rgba(50,130,222,.3)}
+
+.navi{display:flex;align-items:center;height:64px;gap:0}
+.nlogo{display:flex;align-items:center;gap:2px;margin-right:32px;flex-shrink:0}
+.nlinks{display:flex;align-items:center;flex:1}
+
+/* DROPDOWN FIX — ::after bridge le gap pour éviter la fermeture */
+.ni{position:relative}
+.ni::after{content:'';position:absolute;top:100%;left:-12px;right:-12px;height:16px;background:transparent}
+
+.nl{display:flex;align-items:center;gap:4px;padding:7px 12px;border-radius:var(--r);white-space:nowrap;cursor:pointer;user-select:none}
+.nl-arr{width:10px;height:10px;transition:transform .2s;flex-shrink:0;opacity:.7}
+.ni:hover > .nl .nl-arr,.ni.op > .nl .nl-arr{transform:rotate(180deg)}
+
+.dd{
+  position:absolute;top:calc(100% + 8px);left:0;
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--rl);padding:6px;
+  min-width:220px;
+  box-shadow:0 16px 40px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.05);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(-8px) scale(.975);transform-origin:top left;
+  transition:opacity .18s cubic-bezier(.22,1,.36,1),transform .18s cubic-bezier(.22,1,.36,1),visibility .18s;
+}
+.ni:hover > .dd,.ni.op > .dd{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+.ddw{min-width:560px;display:grid;grid-template-columns:1fr 1fr}
+.dct{font-size:10.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:8px 10px 4px}
+.dli{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:10px;font-size:13.5px;font-weight:500;color:#1f2937;transition:background .1s}
+.dli:hover{background:var(--bgl)}
+.dico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;margin-top:1px}
+.dsub{font-size:12px;color:var(--muted);font-weight:400;margin-top:2px;display:block;line-height:1.35}
+
+.ncta{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+
+/* ══════════════ HERO ══════════════ */
+.pg-hero{padding:124px 0 72px;border-bottom:1px solid var(--border)}
+.pg-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);text-decoration:none;margin-bottom:24px;font-weight:400;transition:color .15s}
+.pg-back:hover{color:var(--P)}
+.pg-badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:var(--P);text-transform:uppercase;letter-spacing:.09em;margin-bottom:16px}
+.pg-badge::before{content:'';width:14px;height:2px;background:var(--P);border-radius:1px}
+.pg-icon{font-size:40px;margin-bottom:16px;line-height:1}
+.pg-title{font-size:clamp(32px,5vw,56px);font-weight:800;line-height:1.05;margin-bottom:16px;color:var(--text)}
+.pg-sub{font-size:17px;color:var(--muted);line-height:1.68;max-width:600px;font-weight:300}
+
+section{padding:80px 0}
+.pg-section+.pg-section{border-top:1px solid var(--border)}
+.pg-section-alt{background:var(--bgl);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 0}
+h2.sec-h{font-size:clamp(22px,3vw,36px);font-weight:800;margin-bottom:14px;line-height:1.1}
+p.sec-p{font-size:16px;color:var(--muted);line-height:1.72;font-weight:300;margin-bottom:24px}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.feat-list li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:#374151;line-height:1.5}
+.feat-list li::before{content:'';width:20px;height:20px;flex-shrink:0;margin-top:1px;border-radius:50%;background:#eef5ff url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 10l4 4L15.5 7' stroke='%233282DE' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;border:1.5px solid rgba(50,130,222,.22)}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:48px}
+.crd{background:#fff;padding:28px;transition:background .16s}
+.crd:hover{background:var(--bgl)}
+.crd-ico{width:44px;height:44px;border-radius:11px;background:var(--bgl);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;transition:transform .22s}
+.crd:hover .crd-ico{transform:scale(1.1) rotate(-6deg)}
+.crd h3{font-size:15px;font-weight:700;margin-bottom:7px}
+.crd p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
+
+/* 2-col layout */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.mockup-box{background:var(--bgl);border:1px solid var(--border);border-radius:20px;padding:24px;min-height:260px}
+.mrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
+.mrow:last-child{border-bottom:none}
+.mico{width:28px;height:28px;border-radius:7px;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.mlbl{font-size:13px;color:var(--text)}
+.msub{font-size:11.5px;color:var(--muted)}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;border:1px solid}
+.tag-b{background:#eef5ff;color:var(--P);border-color:rgba(50,130,222,.2)}
+.tag-g{background:#f0fdf4;color:#166534;border-color:#bbf7d0}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:48px}
+.step{background:#fff;padding:36px 28px;position:relative;overflow:hidden}
+.step:not(:first-child){border-left:1px solid var(--border)}
+.step-n{position:absolute;top:16px;right:20px;font-size:52px;font-weight:800;color:#f3f4f6;line-height:1;user-select:none}
+.step-ico{width:48px;height:48px;background:var(--P);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;box-shadow:0 4px 14px rgba(50,130,222,.28)}
+.step h3{font-size:17px;font-weight:700;margin-bottom:9px}
+.step p{font-size:13.5px;color:var(--muted);line-height:1.68;font-weight:300}
+
+/* CTA BAND */
+.cta-band{background:#06060E;padding:72px 0;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:500px;height:320px;background:radial-gradient(ellipse,rgba(50,130,222,.18) 0%,transparent 68%);pointer-events:none}
+.cta-band h2{font-size:clamp(26px,4vw,44px);font-weight:800;color:#fff;margin-bottom:14px;position:relative;z-index:1}
+.cta-band p{font-size:16px;color:rgba(255,255,255,.45);margin-bottom:28px;font-weight:300;position:relative;z-index:1}
+.cta-acts{display:flex;justify-content:center;gap:12px;position:relative;z-index:1}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--P);color:#fff;font-size:14.5px;font-weight:600;padding:12px 24px;border-radius:10px;transition:background .15s,box-shadow .15s,transform .1s}
+.btn-p:hover{background:var(--PD);box-shadow:0 6px 22px rgba(50,130,222,.4)}
+.btn-p:active{transform:scale(.97)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);font-size:14.5px;font-weight:400;padding:12px 24px;border-radius:10px;border:1px solid rgba(255,255,255,.14);transition:background .15s}
+.btn-g:hover{background:rgba(255,255,255,.14)}
+
+/* FOOTER */
+footer{background:var(--bgl);border-top:1px solid var(--border)}
+
+/* FORM */
+.form-wrap{max-width:600px}
+.f-grp{margin-bottom:20px}
+.f-lbl{display:block;font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:6px}
+.f-inp{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;outline:none;transition:border-color .15s;background:#fff;color:var(--text)}
+.f-inp:focus{border-color:var(--P);box-shadow:0 0 0 3px rgba(50,130,222,.1)}
+.f-textarea{min-height:140px;resize:vertical}
+.f-submit{background:var(--P);color:#fff;font-size:14.5px;font-weight:600;padding:12px 28px;border-radius:9px;border:none;cursor:pointer;font-family:inherit;transition:background .15s,box-shadow .15s}
+.f-submit:hover{background:var(--PD);box-shadow:0 4px 14px rgba(50,130,222,.3)}
+
+/* CHANGELOG */
+.cl-item{display:flex;gap:32px;padding:32px 0;border-bottom:1px solid var(--border)}
+.cl-item:last-child{border-bottom:none}
+.cl-date{min-width:120px;font-size:13px;color:var(--muted);font-weight:400;padding-top:4px}
+.cl-body h3{font-size:17px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.cl-body p{font-size:14px;color:var(--muted);line-height:1.68;font-weight:300;margin-bottom:12px}
+.cl-tags{display:flex;flex-wrap:wrap;gap:6px}
+.cl-tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px}
+.ct-new{background:#eef5ff;color:var(--P)}
+.ct-fix{background:#f0fdf4;color:#166534}
+.ct-imp{background:#fffbeb;color:#92400e}
+
+/* LEGAL */
+.legal-body{max-width:760px;padding:72px 0}
+.legal-body h2{font-size:20px;font-weight:700;margin:36px 0 10px;color:var(--text)}
+.legal-body h2:first-child{margin-top:0}
+.legal-body p,.legal-body li{font-size:14.5px;color:#374151;line-height:1.8;font-weight:300;margin-bottom:10px}
+.legal-body ul{padding-left:20px;margin-bottom:16px}
+.legal-tabs{display:flex;gap:0;background:var(--bgl);border:1px solid var(--border);border-radius:10px;padding:3px;width:fit-content;margin-bottom:48px}
+.legal-tab{padding:7px 20px;border-radius:8px;font-size:13.5px;font-weight:500;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s;color:var(--muted);background:transparent;border:none;font-family:inherit}
+.legal-tab.act{background:#fff;color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+
+/* AIDE */
+.aide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:48px}
+.aide-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;transition:transform .2s,box-shadow .2s;text-decoration:none;display:block}
+.aide-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.aide-ico{font-size:28px;margin-bottom:12px}
+.aide-card h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
+.aide-card p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
+.faq-list{border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:48px}
+.fi{border-bottom:1px solid var(--border);background:#fff}
+.fi:last-child{border-bottom:none}
+.fq{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;cursor:pointer;gap:14px;user-select:none;transition:background .15s}
+.fq:hover{background:var(--bgl)}
+.fq h3{font-size:15px;font-weight:500;color:var(--text);line-height:1.4}
+.farr{width:22px;height:22px;border-radius:6px;background:var(--bgl);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .15s}
+.farr svg{width:11px;height:11px;stroke:var(--muted);transition:stroke .15s}
+.fi.op .farr{transform:rotate(180deg);background:var(--P);border-color:var(--P)}
+.fi.op .farr svg{stroke:#fff}
+.fans{max-height:0;overflow:hidden;transition:max-height .36s cubic-bezier(.22,1,.36,1)}
+.fans p{padding:0 24px 20px;font-size:14px;color:var(--muted);line-height:1.72;font-weight:300}
+.fi.op .fans{max-height:300px}
+
+
+
+/* ══════════════════════════════════════════════════════
+   HAMBURGER & MOBILE MENU
+══════════════════════════════════════════════════════ */
+.hamburger{
+  display:none;flex-direction:column;justify-content:center;align-items:center;
+  width:40px;height:40px;border-radius:8px;background:transparent;border:none;
+  cursor:pointer;padding:6px;gap:5px;margin-left:auto;flex-shrink:0;
+  transition:background .15s;
+}
+.hamburger:hover{background:var(--bgl)}
+.hamburger span{
+  display:block;width:22px;height:2px;background:#374151;border-radius:2px;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .2s,width .25s;
+  transform-origin:center;
+}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;width:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile overlay menu */
+#mobile-menu{
+  display:none;position:fixed;top:65px;left:0;right:0;bottom:0;z-index:8900;
+  background:#fff;overflow-y:auto;padding:0 0 32px;
+  transform:translateY(-12px);opacity:0;
+  transition:transform .28s cubic-bezier(.22,1,.36,1),opacity .22s;
+}
+#mobile-menu.visible{display:block}
+#mobile-menu.open{transform:translateY(0);opacity:1}
+
+/* Prevent body scroll when menu open */
+body.menu-open{overflow:hidden}
+
+.mm-section{border-bottom:1px solid var(--border);padding:0}
+.mm-section-title{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:15px 20px;font-size:15px;font-weight:600;color:var(--text);
+  cursor:pointer;background:none;border:none;width:100%;text-align:left;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+.mm-section-title .mm-arr{
+  width:18px;height:18px;display:flex;align-items:center;justify-content:center;
+  transition:transform .22s;flex-shrink:0;opacity:.6;
+}
+.mm-section.open .mm-arr{transform:rotate(180deg)}
+.mm-links{display:none;padding:4px 12px 12px}
+.mm-section.open .mm-links{display:flex;flex-direction:column;gap:2px}
+.mm-link{
+  display:flex;align-items:center;gap:10px;padding:10px 10px;
+  border-radius:10px;text-decoration:none;
+  transition:background .12s;
+}
+.mm-link:hover{background:var(--bgl)}
+.mm-link-ico{width:32px;height:32px;border-radius:8px;background:var(--bgl);
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.mm-link strong{font-size:14px;color:#1f2937;display:block}
+.mm-link span{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+.mm-direct{
+  display:block;padding:15px 20px;font-size:15px;font-weight:500;
+  color:var(--text);text-decoration:none;border-bottom:1px solid var(--border);
+}
+.mm-cta{padding:20px;display:flex;flex-direction:column;gap:10px}
+.mm-cta .bh1,.mm-cta .bp,.mm-cta .btn-cta{
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;padding:13px 20px;border-radius:10px;font-size:15px;font-weight:600;
+  text-decoration:none;
+}
+.mm-btn-primary{background:var(--P);color:#fff;border-radius:10px;border:none;font-family:'IBM Plex Sans',sans-serif}
+.mm-btn-secondary{background:var(--bgl);color:var(--text);border-radius:10px;border:1.5px solid var(--border);font-family:'IBM Plex Sans',sans-serif}
+
+/* ══════════════════════════════════════════════════════
+   GLOBAL RESPONSIVE — all pages
+══════════════════════════════════════════════════════ */
+img,video,iframe,svg.hero-img{max-width:100%;height:auto}
+
+/* ── TABLET ≤ 1024px ── */
+@media(max-width:1024px){
+  .w{padding:0 28px}
+  .wn{padding:0 28px}
+  /* navbar */
+  .nlinks,.ncta{display:none}
+  .hamburger{display:flex}
+  /* cards & grids */
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .two-col{grid-template-columns:1fr;gap:40px}
+  .feat-cols{grid-template-columns:1fr}
+  /* feature pages */
+  .pg-title{font-size:clamp(28px,4.5vw,48px)}
+}
+
+/* ── TABLET ≤ 900px ── */
+@media(max-width:900px){
+  .w{padding:0 24px}
+  .wn{padding:0 24px}
+  section{padding:72px 0}
+  /* grids */
+  .fb{grid-template-columns:1fr;gap:40px}
+  .fb.fl .fbv{order:0}
+  .fgrid{grid-template-columns:repeat(2,1fr)}
+  .howg{grid-template-columns:1fr}
+  .hstep:not(:first-child){border-left:none;border-top:1px solid var(--border)}
+  .igrid{grid-template-columns:1fr 1fr}
+  .pgrid{grid-template-columns:1fr}
+  .tgrid{grid-template-columns:1fr}
+  .ftg{grid-template-columns:1fr 1fr}
+  /* app mockup */
+  .appbody{grid-template-columns:1fr 200px;min-height:360px}
+  .aps{display:none}
+  .bin{gap:20px 32px}
+  /* aux pages */
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .aide-grid{grid-template-columns:repeat(2,1fr)!important}
+  .chg-grid{grid-template-columns:1fr!important}
+  .contact-cols{grid-template-columns:1fr!important}
+  .legal-toc{display:none!important}
+  .legal-body{grid-template-columns:1fr!important}
+}
+
+/* ── MOBILE ≤ 640px ── */
+@media(max-width:640px){
+  .w{padding:0 16px}
+  .wn{padding:0 16px}
+  section{padding:56px 0}
+  /* typography */
+  h1.ht{font-size:clamp(30px,8vw,48px)}
+  h2.sh{font-size:clamp(22px,6vw,36px)!important}
+  h2.sec-h{font-size:clamp(20px,5.5vw,32px)}
+  .pg-title{font-size:clamp(26px,7vw,42px)}
+  /* hero */
+  .hmkp{display:none}
+  .hstats{flex-wrap:wrap;gap:16px 28px;justify-content:center}
+  .hsdiv{display:none}
+  .hacts{flex-direction:column;align-items:stretch;width:100%;max-width:340px;margin-left:auto;margin-right:auto}
+  .bh1,.bh2{justify-content:center}
+  .hsub{font-size:16px}
+  /* grids */
+  .fgrid{grid-template-columns:1fr}
+  .igrid{grid-template-columns:1fr}
+  .ftg{grid-template-columns:1fr}
+  .card-grid{grid-template-columns:1fr}
+  .aide-grid{grid-template-columns:1fr!important}
+  .chg-grid{grid-template-columns:1fr!important}
+  /* bands */
+  .bin{flex-direction:column;align-items:flex-start;gap:14px}
+  .bi{font-size:13px}
+  /* pricing */
+  .ptog-wrap{width:100%;justify-content:center}
+  .pgrid{gap:14px}
+  /* cta */
+  .ctain{padding:56px 16px}
+  .ctaacts{flex-direction:column;align-items:center}
+  /* footer */
+  .ftg{grid-template-columns:1fr;gap:28px}
+  .ftbot{flex-direction:column;align-items:flex-start;gap:8px}
+  .ftleg{flex-wrap:wrap;gap:12px}
+  /* feature pages */
+  .two-col{grid-template-columns:1fr;gap:32px}
+  .mockup-box{display:none}
+  /* pages content */
+  .pg-hero{padding:96px 0 48px}
+  .pg-sub{font-size:15px}
+  /* contact */
+  .contact-cols{grid-template-columns:1fr!important;gap:32px!important}
+  /* changelot */
+  .chg-item{padding:20px!important}
+  /* helpers */
+  .hide-mobile{display:none!important}
+  /* modals */
+  #modal-rappel > div{padding:28px 20px}
+  #modal-rappel [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+}
+
+/* ── MOBILE ≤ 480px ── */
+@media(max-width:480px){
+  .w{padding:0 14px}
+  .wn{padding:0 14px}
+  h1.ht{font-size:clamp(28px,8.5vw,42px)}
+  .hbadge{font-size:11px}
+  .nlogo svg{width:100px;height:26px}
+  .bh1,.bh2{font-size:14px;padding:12px 20px}
+  .hstats{gap:12px 20px}
+  .hstn{font-size:26px}
+  .fgrid{grid-template-columns:1fr}
+  .card-grid{grid-template-columns:1fr}
+  section{padding:48px 0}
+  /* legal */
+  .legal-content{font-size:14px!important}
+}
+
+/* ── GRAND ÉCRAN ≥ 1441px ── */
+@media(min-width:1441px){
+  .w{max-width:1280px}
+  h1.ht{font-size:82px}
+  .hmkp{max-width:1200px}
+}
+
+
+/* ── AIDE steps responsive ── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:48px}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav id="nav">
+<div class="w">
+<div class="navi">
+  <a href="index.html" class="nlogo">
+    <img src="/logo.svg" width="160" height="40" alt="WebForms" style="display:block">
+  </a>
+  <div class="nlinks">
+    <div class="ni">
+      <div class="nl">Fonctionnalités <svg class="nl-arr" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M1.5 3.5l3 3 3-3"/></svg></div>
+      <div class="dd ddw">
+        <div>
+          <div class="dct">Créer & Publier</div>
+          <a href="fonctionnalites-templates.html" class="dli"><div class="dico f-txt">📄</div><div><strong>Templates PDF</strong><span class="dsub">Uploadez vos PDF existants</span></div></a>
+          <a href="fonctionnalites-builder.html" class="dli"><div class="dico f-vio" style="background:#f5f3ff;border-radius:8px">🎨</div><div><strong>Builder visuel</strong><span class="dsub">Glisser-déposer sur le PDF</span></div></a>
+          <a href="fonctionnalites-formulaires.html" class="dli"><div class="dico f-chk" style="background:#f0fdf4;border-radius:8px">🌐</div><div><strong>Formulaires publiés</strong><span class="dsub">Lien public ou privé sécurisé</span></div></a>
+          <a href="fonctionnalites-signatures.html" class="dli"><div class="dico f-sign" style="background:#fff1f2;border-radius:8px">✍️</div><div><strong>Signature pad</strong><span class="dsub">Intégrée dans le PDF final</span></div></a>
+        </div>
+        <div>
+          <div class="dct">Gérer & Exporter</div>
+          <a href="fonctionnalites-soumissions.html" class="dli"><div class="dico" style="background:#f0fdf4;border-radius:8px">📥</div><div><strong>Soumissions</strong><span class="dsub">Filtres, édition, export PDF</span></div></a>
+          <a href="fonctionnalites-app-connexions.html" class="dli"><div class="dico" style="background:rgba(47,57,112,.1);border-radius:8px">🔗</div><div><strong>App connexions</strong><span class="dsub">Connectez vos outils internes</span></div></a>
+          <a href="fonctionnalites-membres.html" class="dli"><div class="dico f-vio" style="background:#f5f3ff;border-radius:8px">👥</div><div><strong>Membres</strong><span class="dsub">Rôles et invitations</span></div></a>
+          <a href="fonctionnalites-workspaces.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">🏢</div><div><strong>Espaces de travail</strong><span class="dsub">Workspaces par projet</span></div></a>
+        </div>
+      </div>
+    </div>
+    <div class="ni">
+      <div class="nl">Usages <svg class="nl-arr" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M1.5 3.5l3 3 3-3"/></svg></div>
+      <div class="dd">
+        <a href="usages-suivi-chantier.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">🏗️</div><div><strong>Suivi terrain</strong><span class="dsub">Rapports & comptes rendus</span></div></a>
+        <a href="usages-rapport-intervention.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">📋</div><div><strong>Rapport d'intervention</strong><span class="dsub">Fiches d'intervention terrain</span></div></a>
+        <a href="usages-pv-reception.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">📋</div><div><strong>PV de réception</strong><span class="dsub">Procès verbaux dématérialisés</span></div></a>
+        <a href="usages-securite.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">🔒</div><div><strong>Sécurité & conformité</strong><span class="dsub">Audits, EPI, conformité</span></div></a>
+        <a href="usages-presence.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">👷</div><div><strong>Présence terrain</strong><span class="dsub">Feuilles de présence / heures</span></div></a>
+        <a href="usages-logistique.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">🚚</div><div><strong>Logistique</strong><span class="dsub">Bons de livraison</span></div></a>
+      </div>
+    </div>
+    <a href="#pricing" class="nl">Tarifs</a>
+    <div class="ni">
+      <div class="nl">Ressources <svg class="nl-arr" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M1.5 3.5l3 3 3-3"/></svg></div>
+      <div class="dd">
+        <a href="aide.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">📖</div><div><strong>Centre d'aide</strong><span class="dsub">Guides et tutoriels</span></div></a>
+        <a href="contact.html" class="dli"><div class="dico" style="background:#f7f7f9;border-radius:8px">✉️</div><div><strong>Nous contacter</strong><span class="dsub">Réponse sous 24h</span></div></a>
+      </div>
+    </div>
+  </div>
+  <div class="ncta">
+    <a href="https://app.webforms.fr/auth/login" class="bg">Se connecter</a>
+    <a href="https://app.webforms.fr/auth/signup" class="bp">Essai gratuit — 7 jours</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+</div>
+</nav>
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu navigation">
+  <!-- Fonctionnalités -->
+  <div class="mm-section">
+    <button class="mm-section-title" onclick="mmToggle(this)">
+      Fonctionnalités
+      <span class="mm-arr"><svg viewBox="0 0 10 10" fill="none" stroke="#374151" stroke-width="2"><path d="M1.5 3.5l3 3 3-3"/></svg></span>
+    </button>
+    <div class="mm-links">
+      <div style="font-size:10.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:4px 10px 6px">Créer & Publier</div>
+      <a href="fonctionnalites-templates.html" class="mm-link"><div class="mm-link-ico">📄</div><div><strong>Templates PDF</strong><span>Uploadez vos PDF existants</span></div></a>
+      <a href="fonctionnalites-builder.html" class="mm-link"><div class="mm-link-ico" style="background:#f5f3ff">🎨</div><div><strong>Builder visuel</strong><span>Glisser-déposer sur le PDF</span></div></a>
+      <a href="fonctionnalites-formulaires.html" class="mm-link"><div class="mm-link-ico" style="background:#f0fdf4">🌐</div><div><strong>Formulaires publiés</strong><span>Lien public ou privé sécurisé</span></div></a>
+      <a href="fonctionnalites-signatures.html" class="mm-link"><div class="mm-link-ico" style="background:#fff1f2">✍️</div><div><strong>Signature pad</strong><span>Intégrée dans le PDF final</span></div></a>
+      <div style="font-size:10.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;padding:10px 10px 6px">Gérer & Exporter</div>
+      <a href="fonctionnalites-soumissions.html" class="mm-link"><div class="mm-link-ico" style="background:#f0fdf4">📥</div><div><strong>Soumissions</strong><span>Filtres, édition, export PDF</span></div></a>
+      <a href="fonctionnalites-app-connexions.html" class="mm-link"><div class="mm-link-ico" style="background:rgba(47,57,112,.08)">🔗</div><div><strong>App connexions</strong><span>Connectez vos outils internes</span></div></a>
+      <a href="fonctionnalites-membres.html" class="mm-link"><div class="mm-link-ico" style="background:#f5f3ff">👥</div><div><strong>Membres</strong><span>Rôles et invitations</span></div></a>
+      <a href="fonctionnalites-workspaces.html" class="mm-link"><div class="mm-link-ico">🏢</div><div><strong>Espaces de travail</strong><span>Workspaces par projet</span></div></a>
+    </div>
+  </div>
+  <!-- Usages -->
+  <div class="mm-section">
+    <button class="mm-section-title" onclick="mmToggle(this)">
+      Usages
+      <span class="mm-arr"><svg viewBox="0 0 10 10" fill="none" stroke="#374151" stroke-width="2"><path d="M1.5 3.5l3 3 3-3"/></svg></span>
+    </button>
+    <div class="mm-links">
+      <a href="usages-suivi-chantier.html" class="mm-link"><div class="mm-link-ico">🏗️</div><div><strong>Suivi terrain</strong><span>Rapports & comptes rendus</span></div></a>
+      <a href="usages-rapport-intervention.html" class="mm-link"><div class="mm-link-ico">📋</div><div><strong>Rapport d'intervention</strong><span>Fiches d'intervention terrain</span></div></a>
+      <a href="usages-pv-reception.html" class="mm-link"><div class="mm-link-ico">📋</div><div><strong>PV de réception</strong><span>Procès verbaux dématérialisés</span></div></a>
+      <a href="usages-securite.html" class="mm-link"><div class="mm-link-ico">🔒</div><div><strong>Sécurité & conformité</strong><span>Audits, EPI, conformité</span></div></a>
+      <a href="usages-presence.html" class="mm-link"><div class="mm-link-ico">👷</div><div><strong>Présence terrain</strong><span>Feuilles de présence / heures</span></div></a>
+      <a href="usages-logistique.html" class="mm-link"><div class="mm-link-ico">🚚</div><div><strong>Logistique</strong><span>Bons de livraison</span></div></a>
+    </div>
+  </div>
+  <!-- Direct links -->
+  <a href="index.html#pricing" class="mm-direct">Tarifs</a>
+  <a href="blog/index.html" class="mm-direct">Blog</a>
+  <!-- Ressources -->
+  <div class="mm-section">
+    <button class="mm-section-title" onclick="mmToggle(this)">
+      Ressources
+      <span class="mm-arr"><svg viewBox="0 0 10 10" fill="none" stroke="#374151" stroke-width="2"><path d="M1.5 3.5l3 3 3-3"/></svg></span>
+    </button>
+    <div class="mm-links">
+      <a href="aide.html" class="mm-link"><div class="mm-link-ico">📖</div><div><strong>Centre d'aide</strong><span>Guides et tutoriels</span></div></a>
+      <a href="contact.html" class="mm-link"><div class="mm-link-ico">✉️</div><div><strong>Nous contacter</strong><span>Réponse sous 24h</span></div></a>
+    </div>
+  </div>
+  <!-- CTAs -->
+  <div class="mm-cta">
+    <a href="https://app.webforms.fr/auth/login" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:10px;font-size:15px;font-weight:600;background:var(--bgl);color:var(--text);border:1.5px solid var(--border);text-decoration:none">Se connecter</a>
+    <a href="https://app.webforms.fr/auth/signup" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:10px;font-size:15px;font-weight:600;background:var(--P);color:#fff;text-decoration:none">Essai gratuit — 7 jours</a>
+  </div>
+</div>
+
+<div class="pg-hero">
+  <div class="w">
+    <h1 class="pg-title">Centre d'aide</h1>
+    <p class="pg-sub">Guides, tutoriels et réponses à toutes vos questions sur WebForms.</p>
+    <div style="margin-top:28px;max-width:480px">
+      <input type="text" id="aide-search" class="f-inp" placeholder="🔍 Rechercher dans l'aide..." style="font-size:15px;padding:12px 16px" onkeydown="if(event.key==='Enter')searchAide()">
+      <button onclick="searchAide()" style="margin-top:10px;background:var(--P);color:#fff;border:none;padding:10px 22px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;font-family:'IBM Plex Sans',sans-serif">Rechercher</button>
+    </div>
+  </div>
+</div>
+
+<section class="pg-section">
+  <div class="w">
+    <h2 class="sec-h" style="margin-bottom:8px">Guides par catégorie</h2>
+    <p class="sec-p">Trouvez rapidement la réponse à votre question.</p>
+    <div class="aide-grid">
+      <a href="#" class="aide-card"><div class="aide-ico">🏢</div><h3>Créer un espace de travail</h3><p>Configurer votre espace, inviter votre équipe et organiser vos formulaires.</p></a>
+      <a href="#" class="aide-card"><div class="aide-ico">📄</div><h3>Créer un formulaire</h3><p>Importer un PDF, poser des champs et publier votre formulaire en quelques minutes.</p></a>
+      <a href="#" class="aide-card"><div class="aide-ico">🔗</div><h3>Partager vos formulaires</h3><p>Envoyer un lien, intégrer sur votre site ou générer un QR code imprimable.</p></a>
+      <a href="#" class="aide-card"><div class="aide-ico">✏️</div><h3>Modifier un formulaire après soumission</h3><p>Corriger ou compléter une soumission existante depuis le tableau de bord.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="pg-section-alt">
+  <div class="w" style="max-width:760px;margin-left:auto;margin-right:auto">
+    <h2 class="sec-h" style="text-align:center;margin-bottom:8px">Questions fréquentes</h2>
+    <p class="sec-p" style="text-align:center;margin:0 auto 0">Les réponses aux questions les plus posées.</p>
+    <div class="faq-list">
+      <div class="fi"><div class="fq" onclick="faq(this)"><h3>Comment créer mon premier template ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>Dans votre tableau de bord, cliquez sur votre espace de travail puis sur "Nouveau formulaire". Uploadez votre PDF, le builder s'ouvre automatiquement. Glissez les champs depuis le panneau de droite directement sur votre PDF.</p></div></div>
+      <div class="fi"><div class="fq" onclick="faq(this)"><h3>Mon formulaire est-il accessible depuis n'importe quel navigateur ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>Oui. Les formulaires publiés sont accessibles depuis Chrome, Firefox, Edge ou Safari. Aucune application à installer, aucun compte à créer pour les personnes qui remplissent.</p></div></div>
+      <div class="fi"><div class="fq" onclick="faq(this)"><h3>Comment exporter plusieurs soumissions en PDF ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>Dans la page Soumissions, cochez les cases des soumissions à exporter, puis cliquez sur "Exporter la sélection". Un fichier ZIP contenant tous les PDFs est téléchargé automatiquement.</p></div></div>
+      <div class="fi"><div class="fq" onclick="faq(this)"><h3>Que se passe-t-il à la fin de l'essai gratuit ?</h3><div class="farr"><svg viewBox="0 0 12 12" fill="none" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div></div><div class="fans"><p>À la fin des 7 jours, votre compte passe en mode lecture seule. Vous pouvez consulter vos données mais pas créer de nouvelles soumissions. Choisissez un pack pour reprendre l'activité, sans perdre aucune donnée.</p></div></div>
+    </div>
+  </div>
+</section>
+<div class="cta-band">
+  <h2>Besoin d'aide supplémentaire ?</h2>
+  <p>Notre équipe répond sous 24h.</p>
+  <div class="cta-acts">
+    <a href="https://app.webforms.fr/auth/signup" class="btn-p">🚀 Essayer gratuitement</a>
+    <button onclick="openRappel()" class="btn-g" style="cursor:pointer;border:none;background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);font-size:14.5px;font-weight:400;padding:12px 24px;border-radius:10px">📞 Être rappelé</button>
+  </div>
+</div>
+
+<footer>
+<div style="max-width:1120px;margin:0 auto;padding:0 36px">
+  <div class="ft-inline-grid">
+    <div>
+      <div style="margin-bottom:12px"><img src="/logo.svg" width="128" height="32" alt="WebForms" style="display:block"></div>
+      <p style="font-size:13px;color:#6B7280;line-height:1.65;font-weight:300">Dématérialisez vos formulaires terrain en entreprise.</p>
+    </div>
+    <div>
+      <h4 style="font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px">Fonctionnalités</h4>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+        <li><a href="fonctionnalites-templates.html" style="font-size:13px;color:#6B7280;text-decoration:none">Templates PDF</a></li>
+        <li><a href="fonctionnalites-builder.html" style="font-size:13px;color:#6B7280;text-decoration:none">Builder visuel</a></li>
+        <li><a href="fonctionnalites-formulaires.html" style="font-size:13px;color:#6B7280;text-decoration:none">Formulaires publiés</a></li>
+        <li><a href="fonctionnalites-soumissions.html" style="font-size:13px;color:#6B7280;text-decoration:none">Soumissions &amp; Export</a></li>
+        <li><a href="fonctionnalites-signatures.html" style="font-size:13px;color:#6B7280;text-decoration:none">Signature en paraphe</a></li>
+        <li><a href="fonctionnalites-workspaces.html" style="font-size:13px;color:#6B7280;text-decoration:none">Espaces de travail</a></li>
+        <li><a href="fonctionnalites-app-connexions.html" style="font-size:13px;color:#6B7280;text-decoration:none">App connexions</a></li>
+        <li><a href="fonctionnalites-membres.html" style="font-size:13px;color:#6B7280;text-decoration:none">Membres</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px">Usages</h4>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+        <li><a href="usages-suivi-chantier.html" style="font-size:13px;color:#6B7280;text-decoration:none">Suivi terrain</a></li>
+        <li><a href="usages-pv-reception.html" style="font-size:13px;color:#6B7280;text-decoration:none">PV de réception</a></li>
+        <li><a href="usages-securite.html" style="font-size:13px;color:#6B7280;text-decoration:none">Sécurité &amp; conformité</a></li>
+        <li><a href="usages-presence.html" style="font-size:13px;color:#6B7280;text-decoration:none">Présence terrain</a></li>
+        <li><a href="usages-logistique.html" style="font-size:13px;color:#6B7280;text-decoration:none">Logistique</a></li>
+      </ul>
+      <h4 style="font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px;margin-top:22px">Ressources</h4>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+        <li><a href="aide.html" style="font-size:13px;color:#6B7280;text-decoration:none">Centre d'aide</a></li>
+        <li><a href="https://webforms.fr" style="font-size:13px;color:#6B7280;text-decoration:none">Tutoriel vidéo</a></li>
+        <li><a href="blog/index.html" style="font-size:13px;color:#6B7280;text-decoration:none">Blog</a></li>
+        <li><a href="changelog.html" style="font-size:13px;color:#6B7280;text-decoration:none">Nouveautés</a></li>
+        <li><a href="contact.html" style="font-size:13px;color:#6B7280;text-decoration:none">Nous contacter</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px">Entreprise</h4>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+        <li><a href="index.html#pricing" style="font-size:13px;color:#6B7280;text-decoration:none">Tarifs</a></li>
+        <li><a href="contact.html" style="font-size:13px;color:#6B7280;text-decoration:none">Nous contacter</a></li>
+        <li><a href="fonctionnalites-membres.html" style="font-size:13px;color:#6B7280;text-decoration:none">Membres</a></li>
+        <li><a href="changelog.html" style="font-size:13px;color:#6B7280;text-decoration:none">Changelog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px">Légal</h4>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+        <li><a href="legal.html" style="font-size:13px;color:#6B7280;text-decoration:none">Confidentialité</a></li>
+        <li><a href="legal.html" style="font-size:13px;color:#6B7280;text-decoration:none">CGV — CGU</a></li>
+        <li><a href="legal.html" style="font-size:13px;color:#6B7280;text-decoration:none">Mentions légales</a></li>
+        <li><a href="legal.html" style="font-size:13px;color:#6B7280;text-decoration:none">Politique de cookies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-inline-bot">
+    <span style="font-size:12px;color:#6B7280">© 2026 WebForms. Tous droits réservés.</span>
+    <div style="display:flex;gap:20px">
+      <a href="legal.html" style="font-size:12px;color:#6B7280;text-decoration:none">Confidentialité</a>
+      <a href="legal.html" style="font-size:12px;color:#6B7280;text-decoration:none">CGV — CGU</a>
+      <a href="legal.html" style="font-size:12px;color:#6B7280;text-decoration:none">Mentions légales</a>
+    </div>
+  </div>
+</div>
+</footer>
+<script>
+const nav=document.getElementById('nav');
+function upNav(){nav.classList.toggle('sc',window.scrollY>20)}
+upNav();window.addEventListener('scroll',upNav,{passive:true});
+function faq(btn){const it=btn.closest('.fi'),op=it.classList.contains('op');document.querySelectorAll('.fi.op').forEach(i=>i.classList.remove('op'));if(!op)it.classList.add('op');}
+function searchAide(){
+  var q=document.getElementById('aide-search').value.toLowerCase().trim();
+  if(!q)return;
+  var pages=[
+    {url:'fonctionnalites-templates.html',keywords:['template','pdf','upload','importer','modele','modèle','formulaire','créer','créer']},
+    {url:'fonctionnalites-builder.html',keywords:['builder','champ','glisser','déposer','visuel','construire','poser','field']},
+    {url:'fonctionnalites-formulaires.html',keywords:['formulaire','publier','publié','lien','public','remplir','partager']},
+    {url:'fonctionnalites-signatures.html',keywords:['signature','signer','paraphe','pad','sign']},
+    {url:'fonctionnalites-soumissions.html',keywords:['soumission','export','pdf','filtrer','editer','éditer','télécharger','download','historique']},
+    {url:'fonctionnalites-membres.html',keywords:['membre','collaborateur','role','rôle','invitation','permission','équipe','equipe','acces','accès']},
+    {url:'fonctionnalites-workspaces.html',keywords:['workspace','espace','travail','projet','organisation']},
+    {url:'fonctionnalites-app-connexions.html',keywords:['connexion','integration','intégration','saas','outil','connecter','api','webhook']},
+    {url:'usages-suivi-chantier.html',keywords:['projet','suivi','rapport','compte rendu']},
+    {url:'usages-pv-reception.html',keywords:['pv','réception','reception','procès verbal','proces verbal']},
+    {url:'usages-securite.html',keywords:['securite','sécurité','permis','epi','conformité','conformite']},
+    {url:'usages-presence.html',keywords:['presence','présence','feuille','heures','pointage']},
+    {url:'usages-logistique.html',keywords:['logistique','livraison','bon','transport']},
+    {url:'index.html#pricing',keywords:['tarif','prix','pack','facturation','facture','abonnement','starter','avancé','entreprise','paiement','promo']},
+    {url:'contact.html',keywords:['contact','support','aide','question','problème','probleme','bug','assistance']},
+    {url:'legal.html',keywords:['legal','légal','cgv','cgu','confidentialite','confidentialité','mentions','rgpd','données','données']}
+  ];
+  var best=null,bestScore=0;
+  pages.forEach(function(p){
+    var score=0;
+    p.keywords.forEach(function(k){if(q.includes(k)||k.includes(q))score++;});
+    if(score>bestScore){bestScore=score;best=p.url;}
+  });
+  if(best&&bestScore>0){window.location.href=best;}
+  else{alert('Aucune page trouvée pour "'+q+'". Essayez un autre mot-clé.');}
+}
+</script>
+
+<div id="modal-rappel" style="display:none;position:fixed;inset:0;z-index:99000;background:rgba(6,6,14,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px">
+  <div style="background:#fff;border-radius:20px;padding:40px;max-width:480px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.2);animation:modalIn .28s cubic-bezier(.22,1,.36,1)">
+    <button onclick="closeRappel()" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:#f3f4f6;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:#6B7280" onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">✕</button>
+    <div style="width:48px;height:48px;background:#eef5ff;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px">📞</div>
+    <h2 style="font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:800;color:#111827;margin-bottom:6px;letter-spacing:-0.02em">Être rappelé</h2>
+    <p style="font-size:14px;color:#6B7280;margin-bottom:26px;line-height:1.6;font-weight:300">Laissez-nous vos coordonnées, on vous rappelle sous 24h pour vous présenter WebForms.</p>
+    <div id="rappel-form">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <div><label style="display:block;font-size:13px;font-weight:500;color:#111827;margin-bottom:6px">Prénom <span style="color:#3282DE">*</span></label><input id="r-prenom" type="text" placeholder="Jean" style="width:100%;padding:10px 13px;border:1.5px solid #E4E4E7;border-radius:8px;font-size:14px;font-family:'IBM Plex Sans',sans-serif;outline:none;color:#111827" onfocus="this.style.borderColor='#3282DE'" onblur="this.style.borderColor='#E4E4E7'"></div>
+        <div><label style="display:block;font-size:13px;font-weight:500;color:#111827;margin-bottom:6px">Nom <span style="color:#3282DE">*</span></label><input id="r-nom" type="text" placeholder="Dupont" style="width:100%;padding:10px 13px;border:1.5px solid #E4E4E7;border-radius:8px;font-size:14px;font-family:'IBM Plex Sans',sans-serif;outline:none;color:#111827" onfocus="this.style.borderColor='#3282DE'" onblur="this.style.borderColor='#E4E4E7'"></div>
+      </div>
+      <div style="margin-bottom:14px"><label style="display:block;font-size:13px;font-weight:500;color:#111827;margin-bottom:6px">Téléphone <span style="color:#3282DE">*</span></label><input id="r-tel" type="tel" placeholder="06 12 34 56 78" style="width:100%;padding:10px 13px;border:1.5px solid #E4E4E7;border-radius:8px;font-size:14px;font-family:'IBM Plex Sans',sans-serif;outline:none;color:#111827" onfocus="this.style.borderColor='#3282DE'" onblur="this.style.borderColor='#E4E4E7'"></div>
+      <div style="margin-bottom:22px"><label style="display:block;font-size:13px;font-weight:500;color:#111827;margin-bottom:6px">Message <span style="font-size:12px;font-weight:400;color:#9ca3af">(optionnel)</span></label><textarea id="r-msg" placeholder="Dites-nous en plus sur votre activité..." style="width:100%;padding:10px 13px;border:1.5px solid #E4E4E7;border-radius:8px;font-size:14px;font-family:'IBM Plex Sans',sans-serif;outline:none;color:#111827;resize:vertical;min-height:90px;line-height:1.55" onfocus="this.style.borderColor='#3282DE'" onblur="this.style.borderColor='#E4E4E7'"></textarea></div>
+      <div id="r-error" style="display:none;background:#fff0f0;border:1px solid #fecdd3;border-radius:8px;padding:10px 14px;font-size:13px;color:#dc2626;margin-bottom:14px"></div>
+      <button onclick="sendRappel()" id="r-btn" style="width:100%;background:#3282DE;color:#fff;font-size:15px;font-weight:600;padding:13px;border-radius:10px;border:none;cursor:pointer;font-family:'IBM Plex Sans',sans-serif" onmouseover="this.style.background='#2268C0'" onmouseout="this.style.background='#3282DE'">📞 Demander à être rappelé</button>
+      <p style="font-size:12px;color:#9ca3af;text-align:center;margin-top:12px">Votre numéro ne sera pas utilisé à des fins commerciales.</p>
+    </div>
+    <div id="rappel-success" style="display:none;text-align:center;padding:20px 0">
+      <div style="font-size:48px;margin-bottom:16px">✅</div>
+      <h3 style="font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:800;color:#111827;margin-bottom:8px">Demande envoyée !</h3>
+      <p style="font-size:14.5px;color:#6B7280;line-height:1.65;font-weight:300">Nous vous rappelons sous 24h ouvrées. Merci de votre intérêt pour WebForms.</p>
+      <button onclick="closeRappel()" style="margin-top:20px;background:#f3f4f6;color:#374151;font-size:14px;font-weight:500;padding:10px 24px;border-radius:9px;border:none;cursor:pointer;font-family:'IBM Plex Sans',sans-serif">Fermer</button>
+    </div>
+  </div>
+</div>
+<style>@keyframes modalIn{from{opacity:0;transform:scale(.94) translateY(8px)}to{opacity:1;transform:none}}
+/* ── FOOTER INLINE GRID FIX ── */
+.ft-inline-grid{display:grid;grid-template-columns:200px repeat(4,1fr);gap:40px;margin-bottom:48px;padding-top:60px}
+.ft-inline-bot{border-top:1px solid var(--border);padding:22px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:900px){
+  .ft-inline-grid{grid-template-columns:repeat(2,1fr);gap:28px}
+  .ddw{min-width:100%;grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .ft-inline-grid{grid-template-columns:1fr;gap:24px;padding-top:40px}
+  .ft-inline-bot{flex-direction:column;align-items:flex-start;gap:10px}
+  .form-2col{grid-template-columns:1fr;gap:12px}
+  .ftleg{flex-wrap:wrap;gap:12px}
+  .ddw{grid-template-columns:1fr}
+}
+
+</style>
+<script>
+function openRappel(){var m=document.getElementById('modal-rappel');m.style.display='flex';document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('r-prenom').focus()},100);}
+function closeRappel(){document.getElementById('modal-rappel').style.display='none';document.body.style.overflow='';document.getElementById('rappel-form').style.display='block';document.getElementById('rappel-success').style.display='none';['r-prenom','r-nom','r-tel','r-msg'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('r-error').style.display='none';}
+function sendRappel(){
+  var p=document.getElementById('r-prenom').value.trim(),
+      n=document.getElementById('r-nom').value.trim(),
+      t=document.getElementById('r-tel').value.trim(),
+      m=document.getElementById('r-msg').value.trim(),
+      err=document.getElementById('r-error');
+  if(!p||!n||!t){err.textContent='Veuillez remplir les champs obligatoires.';err.style.display='block';return;}
+  if(!/^[0-9+\s().\-]{6,20}$/.test(t)){err.textContent='Num\u00e9ro de t\u00e9l\u00e9phone invalide.';err.style.display='block';return;}
+  err.style.display='none';
+  var btn=document.getElementById('r-btn');
+  btn.textContent='Envoi en cours\u2026';btn.style.opacity='.7';btn.disabled=true;
+  fetch('/api/rappel',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({prenom:p,nom:n,tel:t,message:m})
+  })
+  .then(function(r){return r.json()})
+  .then(function(data){
+    if(data.success){
+      document.getElementById('rappel-form').style.display='none';
+      document.getElementById('rappel-success').style.display='block';
+    } else {
+      err.textContent="Erreur lors de l'envoi. R\u00e9essayez ou contactez-nous.";
+      err.style.display='block';
+      btn.textContent='\ud83d\udcde Demander \u00e0 \u00eatre rappel\u00e9';btn.style.opacity='1';btn.disabled=false;
+    }
+  })
+  .catch(function(){
+    err.textContent='Erreur r\u00e9seau. R\u00e9essayez dans quelques instants.';
+    err.style.display='block';
+    btn.textContent='\ud83d\udcde Demander \u00e0 \u00eatre rappel\u00e9';btn.style.opacity='1';btn.disabled=false;
+  });
+}
+
+document.addEventListener('DOMContentLoaded',function(){var m=document.getElementById('modal-rappel');if(m){m.addEventListener('click',function(e){if(e.target===this)closeRappel();});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeRappel();});}});
+</script>
+<script>
+// ── Mobile Menu ──────────────────────────────────────────────────
+(function(){
+  var btn=document.getElementById('hamburger');
+  var menu=document.getElementById('mobile-menu');
+  if(!btn||!menu)return;
+
+  function openMenu(){
+    menu.classList.add('visible');
+    requestAnimationFrame(function(){menu.classList.add('open');});
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+    document.body.classList.add('menu-open');
+  }
+  function closeMenu(){
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+    document.body.classList.remove('menu-open');
+    setTimeout(function(){menu.classList.remove('visible');},280);
+  }
+
+  btn.addEventListener('click',function(){
+    btn.classList.contains('open')?closeMenu():openMenu();
+  });
+
+  // Close on resize to desktop
+  window.addEventListener('resize',function(){
+    if(window.innerWidth>1024)closeMenu();
+  });
+
+  // Close on outside tap
+  menu.addEventListener('click',function(e){
+    if(e.target===menu)closeMenu();
+  });
+
+  // Expose for inline onclick usage
+  window._closeMenu=closeMenu;
+
+  // Close menu when a direct link is clicked
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',closeMenu);
+  });
+})();
+
+// ── Accordion sections ────────────────────────────────────────────
+function mmToggle(btn){
+  var section=btn.closest('.mm-section');
+  var isOpen=section.classList.contains('open');
+  document.querySelectorAll('#mobile-menu .mm-section.open').forEach(function(s){s.classList.remove('open');});
+  if(!isOpen)section.classList.add('open');
+}
+</script>
+<script src="chatbot.js"></script>
+<script>
+window.axeptioSettings = {
+  clientId: "69bbd90ba32ccd25e9defde2",
+  cookiesVersion: "e395de94-05ef-4d6c-a3ad-b6b13a6222b3",
+};
+(function(d, s) {
+  var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+  e.async = true; e.src = "//static.axept.io/sdk.js";
+  t.parentNode.insertBefore(e, t);
+})(document, "script");
+</script>
+<script>
+  const observer = new MutationObserver(function() {
+    // Cible le bloc "Gérer mes choix"
+    const purposes = document.querySelector('.axeptio-purposes');
+    if (purposes) {
+      purposes.style.display = 'none';
+    }
+    // Si c'est un shadow DOM ou iframe, on tente aussi via le texte
+    document.querySelectorAll('[class*="axeptio"]').forEach(function(el) {
+      if (el.textContent.trim().startsWith('Gérer mes choix')) {
+        el.style.display = 'none';
+      }
+    });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>   
+</body>
+</html>
