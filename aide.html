@@ -939,7 +939,118 @@ var aideContents = {
   formulaire: {
     ico: '📄',
     title: 'Créer un formulaire',
-    html: `<div class="aide-soon"><div class="aide-soon-ico">🚧</div><h3>Guide en cours de rédaction</h3><p>Ce guide sera disponible très prochainement. En attendant, n'hésitez pas à nous contacter si vous avez besoin d'aide.</p></div>`
+    html: `
+      <div class="aide-steps-list">
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">1</div>
+          <div class="aide-step-content">
+            <h4>Lancer la création</h4>
+            <p>Deux points d'entrée sont disponibles :</p>
+            <ul class="aide-blist">
+              <li>Depuis votre espace de travail, cliquez sur <strong>Ajouter un formulaire</strong></li>
+              <li>Depuis le menu à gauche, cliquez sur le <strong>+</strong> à droite du nom de votre espace</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">2</div>
+          <div class="aide-step-content">
+            <h4>Configurer le formulaire</h4>
+            <p>Une fenêtre s'ouvre. Renseignez les informations de base :</p>
+            <ul class="aide-blist">
+              <li><strong>Nom du formulaire</strong> (obligatoire)</li>
+              <li>Description <span style="color:var(--muted);font-weight:300">(optionnelle)</span></li>
+              <li>Espace de travail dans lequel il sera enregistré</li>
+              <li>Catégorie <span style="color:var(--muted);font-weight:300">(ex : rapports de stock, Cerfa…)</span></li>
+            </ul>
+            <div class="aide-screenshot" style="margin-top:16px">
+              <img src="aide-imgs/formulaire-1.png" alt="Fenêtre nouveau formulaire">
+              <div class="aide-screenshot-caption">Choisissez le nom, l'espace et optionnellement la catégorie.</div>
+            </div>
+            <div class="aide-info" style="margin-top:14px">
+              <span class="aide-info-ico">📎</span>
+              <p>Sélectionnez <strong>Partir avec votre PDF existant</strong> pour importer un document depuis votre ordinateur — vous serez directement redirigé vers l'éditeur.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">3</div>
+          <div class="aide-step-content">
+            <h4>Ajouter des champs dans l'éditeur</h4>
+            <p>Au centre, votre PDF s'affiche. Les pages sont accessibles sur le côté droit. Glissez-déposez un champ directement sur votre PDF pour définir une zone de saisie.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px">
+              <div style="background:var(--bgl);border:1px solid var(--border);border-radius:12px;padding:14px">
+                <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">Onglet Champs</div>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:5px">
+                  ${['Texte libre, zone de texte','Email, téléphone','Nombre, date, heure','Case à cocher','Liste déroulante (simple / multi)','Image, dessin, signature, audio','Calculateur'].map(i=>`<li style="font-size:12.5px;color:#374151;display:flex;gap:7px;align-items:flex-start"><span style="color:var(--P);font-weight:700;flex-shrink:0">·</span>${i}</li>`).join('')}
+                </ul>
+              </div>
+              <div style="background:var(--bgl);border:1px solid var(--border);border-radius:12px;padding:14px">
+                <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px">Onglet Disposition</div>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:5px">
+                  ${['Texte + Image','Texte + Signature','Date + Signature','Case à cocher + Texte'].map(i=>`<li style="font-size:12.5px;color:#374151;display:flex;gap:7px;align-items:flex-start"><span style="color:var(--P);font-weight:700;flex-shrink:0">·</span>${i}</li>`).join('')}
+                </ul>
+                <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
+                  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px">Intégration Excel</div>
+                  <p style="font-size:12.5px;color:#374151;line-height:1.5">Listes déroulantes connectées à un Google Sheets (simple ou multi-sélection).</p>
+                </div>
+              </div>
+            </div>
+            <div class="aide-info" style="margin-top:14px">
+              <span class="aide-info-ico">💡</span>
+              <p>Activez l'option d'<strong>alignement</strong> (en haut à gauche) pour un placement précis. Maintenez <strong>Shift</strong> pour sélectionner et déplacer plusieurs champs à la fois.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">4</div>
+          <div class="aide-step-content">
+            <h4>Paramétrer chaque champ</h4>
+            <p>En cliquant sur un champ, le menu de droite affiche ses propriétés :</p>
+            <ul class="aide-blist">
+              <li>Nom, valeur par défaut, conditions</li>
+              <li>Apparence — taille, couleur…</li>
+              <li>Actions : copier, coller, dupliquer, supprimer, <strong>verrouiller</strong></li>
+            </ul>
+            <p style="margin-top:10px;font-size:13.5px;color:var(--muted);line-height:1.65">Dans le <strong>menu à gauche</strong>, réorganisez l'ordre des champs par glisser-déposer et définissez la logique de remplissage.</p>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">5</div>
+          <div class="aide-step-content">
+            <h4>Barre d'outils supérieure</h4>
+            <p>En haut de l'interface, vous retrouvez :</p>
+            <ul class="aide-blist">
+              <li>Statut du formulaire — <strong>Brouillon</strong> ou <strong>Publié</strong></li>
+              <li>État de sauvegarde et bouton <strong>Annuler</strong></li>
+              <li>Paramètres, lien de partage, envoi par email</li>
+              <li>Aperçu du formulaire final</li>
+              <li>Historique des modifications <span style="color:var(--muted);font-weight:300">(pour revenir en arrière)</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="aide-step-row">
+          <div class="aide-step-num">6</div>
+          <div class="aide-step-content">
+            <h4>Automatisations après soumission</h4>
+            <p>Une fois le formulaire soumis, vous pouvez déclencher automatiquement :</p>
+            <ul class="aide-blist">
+              <li>Envoi d'emails de notification</li>
+              <li>Envoi de données vers <strong>Make, Zapier, n8n</strong></li>
+              <li>Connexion via <strong>Webhook</strong></li>
+              <li>Alimentation automatique d'un <strong>Google Sheets</strong></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    `
   },
 
   partager: {
